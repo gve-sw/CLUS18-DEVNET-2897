@@ -48,7 +48,7 @@ git clone https://wwwin-github.cisco.com/sfloresk/CLUS18-DEVNET-2897.git $HOME/C
 Then, create a virtual environment and install requirements
 
 ```bash
-cd CLUS18-DEVNET-2897
+cd $HOME/CLUS18-DEVNET-2897
 virtualenv devnet2897
 source devnet2897/bin/activate
 pip install -r requirements.txt
@@ -59,7 +59,7 @@ pip install -r requirements.txt
 From the Applications folder, open PyCharm. This is a useful integrated development environment (IDE) that we will use
 to edit different files. 
 
-Click on "open" and then select the directory created in step 1 (CLUS18-DEVNET-2897)
+Click on "open" and then select the directory created in step 1 (CLUS18-DEVNET-2897 - inside the home directory)
 
 There are four directories that you should be aware:
 
@@ -69,11 +69,42 @@ good to give it a look for your reference
 3. web_ui/static: All the JavaScript, CSS, icons and image files that the client will use to render the user interface
 4. web_ui/templates: HTML code for the web UI.
 
-To run this app go to the CLUS18-DEVNET-2897 directory 
+Now, to run the app go you can use these commands:
+
+```bash
+cd $HOME/CLUS18-DEVNET-2897
+python manage.py runserver 0.0.0.0:8080
+```
+The command above executes the manage.py file and pass as a parameter the action (runserver) along with the 
+IPs that are allowed to connect (0.0.0.0 or anyone) with the port where the server will be listening (8080)
+
+You can go to http://0.0.0.0:8080/ to see the base layout. You have now a web application up and running in your machine
 
 ### Step 3 - Adding the port type HTML interface
 
+Its coding time! The first thing that we want to do is to define which type of port we want to create. We could create
+an access port, a port channel or a virtual port channel. For simplicity, we are going to implement the first two.
 
+```html
+
+<div>
+    <br/>
+    <h4>Port
+    </h4>
+    <hr/>
+    <div class="btn-group">
+        <button class="btn btn--primary-ghost sn-type port-type"
+                onclick="$('.port-type').removeClass('selected');$(this).addClass('selected')">
+            Individual
+        </button>
+        <button class="btn btn--primary-ghost sn-type port-type"
+                onclick="$('.port-type').removeClass('selected');$(this).addClass('selected')">
+            Port Channel
+        </button>
+    </div>
+</div>
+
+```
 
 
 ### Step 4 - Adding the port selection HTML interface
