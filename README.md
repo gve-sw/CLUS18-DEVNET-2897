@@ -85,9 +85,12 @@ You can go to http://0.0.0.0:8080/ to see the base layout. You have now a web ap
 Its coding time! The first thing that we want to do is to define which type of port we want to create. We could create
 an access port, a port channel or a virtual port channel. For simplicity, we are going to implement the first two.
 
+Copy the following code in the templates/web_app/home.html file. You must include it within the 
+___<div id="content-div" class="row">___ tag.
+
 ```html
 
-<div>
+<div id="port-type-div">
     <br/>
     <h4>Port
     </h4>
@@ -105,9 +108,13 @@ an access port, a port channel or a virtual port channel. For simplicity, we are
 </div>
 
 ```
+This add a section with a header and two buttons that will be used to choose the port type to deploy.
 
+**Note: <kbd>option ⌥</kbd> + <kbd>command ⌘</kbd> + <kbd>L</kbd> will format the HTML file**  
 
 ### Step 4 - Adding the port selection HTML interface
+
+
 
 ### Step 5 - Adding the EPG/Vlan creation HTML interface
 
