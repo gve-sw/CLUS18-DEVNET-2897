@@ -1,6 +1,8 @@
 ### Step 13 - Requesting the deployment to the server
 With the pod, switch, interfaces and VLANs we have all the information that we need from the user. We will now code a 
-function in the app.js file that will make that possible:
+function in the app.js file that will make that possible.
+
+ You **must** define this within the appModule.controller code block.
 
 ```javascript
     $scope.deploy = function(){
@@ -18,13 +20,8 @@ function in the app.js file that will make that possible:
             })
     };
 ```
-And in the home.html file, look for the button id="btnDeploy"; Add this attribute to the tag
 
-```html
-ng-click="deploy();" 
-```
-
-ng-click will execute the method deploy each time that the button is clicked.
+The **Deploy** button has a ng-click attribute that will execute the method _**deploy**_ each time that the button is clicked.
 
 
 Next -> [Step 14 - Test your app]

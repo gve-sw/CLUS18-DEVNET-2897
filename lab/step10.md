@@ -1,6 +1,7 @@
 ### Step 10 - Populating the switch select
 
-We should do the same thing for switches drop down list. This method will get that information from the server
+We should do the same thing for switches drop down list. This method will get that information from the server.
+ You **must** define this within the appModule.controller code block:
 
  
 ```javascript
@@ -21,21 +22,7 @@ $scope.getSwitches = function(pod){
  
 ```
 
-Bind the $scope.switches variable to the select sel_switches for the user to see them adding this attribute:
-
-```html
-ng-options="switch as switch.fabricNode.attributes.name for switch in switches track by switch.fabricNode.attributes.dn"
-```
-
-There is a catch though. In order to get the switches we need to select a pod first; we can simple instruct the
-sel_pod element to execute the getSwitches method when changed. Add these two attributes to the sel_pod element 
-in the home.html file
-
-```html
-ng-change="getSwitches(deployment.selectedPod)"
-```
-Using ng-change, the method getSwitches is executed each time that the selection changes.
-
+The $scope.switches variable is associated to the switch select via the ng-option attribute added in step 4.
 
 Next -> [Step 11 - Populating the interface selects]
 

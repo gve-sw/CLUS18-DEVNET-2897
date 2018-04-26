@@ -1,8 +1,8 @@
 
 ### Step 12 - Populating the EPGs/VLANs select
 
-The last drop down list to populate is the EPGs/VLANs. Since this is not dependent on any other previous selection
-it is simpler. Add the following javascript to the app.js file 
+The last drop down list to populate is the EPGs/VLANs. Add the following javascript to the app.js file.
+ You **must** define this within the appModule.controller code block:
 
 ```javascript
 $scope.getEpgs = function(){
@@ -21,11 +21,7 @@ $scope.getEpgs = function(){
     $scope.getEpgs();
 ```
 
-Bind the $scope.epgs variable to the HTML adding the following attributes to the select id="sel_epg"
-```html
-ng-options="epg as epg.fvAEPg.attributes.name for epg in epgs track by epg.fvAEPg.attributes.name" 
-ng-model="deployment.selectedEpg"
-```
+The $scope.epgs variable is associated to the EPG/VLAN select via the ng-option attribute added in step 4.
 
 Next -> [Step 13 - Requesting the deployment to the server]
 

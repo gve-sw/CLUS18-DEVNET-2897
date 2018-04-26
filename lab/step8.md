@@ -1,7 +1,7 @@
 ### Step 8 - Preparing server to receive and reply REST API calls
 We will focus now on the server side of the application. In order to show information from ACI (such as Pods, Switches,
-interfaces and EPGs) we need to code API calls in server that can return that information to the web client.
-Luckily for us, using python is quite easy. Open you urls.py file and copy the following below the last defined URL:
+interfaces and EPGs) we need to code API calls in the server that can return that information to the web clients.
+Luckily for us, doing this with Python is quite easy. Open you _**web_ui/urls.py**_ file and copy the following below the last defined URL:
 
 ```python
     # APIs Mappings
@@ -12,9 +12,11 @@ Luckily for us, using python is quite easy. Open you urls.py file and copy the f
     url(r'^api/deploy/?$', views.api_deploy),
 ```
 Looking into the code above, it is mapping URLs with specific methods that will manage http calls using that URL.
- We will create those methods in the views.py file. Copy these methods in this file (views.py) below ```====================>>>>>>>> APIs <<<<<<<<====================```
+ We will create those methods in the _**web_ui/views.py**_ file. Copy the methods below to the end of this file.
 
-**api_pod method**
+#### api_pod method
+
+Returns a json with the list of pods
 
 ```python
 @csrf_exempt
@@ -38,7 +40,9 @@ def api_pod(request):
 
 ```
 
-**api_switch method**
+#### api_switch method
+
+Returns a json with the list of switches for a given pod
 
 ```python
 @csrf_exempt
@@ -62,7 +66,9 @@ def api_switch(request, podDn):
 
 ```
 
-**api_interface method**
+#### api_interface method
+
+Returns a json with the list of interfaces for a given switch
 
 ```python
 @csrf_exempt
@@ -86,7 +92,10 @@ def api_interface(request, switchDn):
 
 ```
 
-**api_epg method**
+#### api_epg method
+
+Returns a list of EPGs for a specific tenant.
+
 ```python
 @csrf_exempt
 def api_epg(request):
@@ -116,7 +125,9 @@ def api_epg(request):
 
 ```
 
-**api_deploy method**
+#### api_deploy method
+
+Deploys an individual or port-channel port
 
 ```python
 @csrf_exempt
@@ -141,6 +152,9 @@ def api_deploy(request):
         return JSONResponse("Bad request. " + request.method + " is not supported", status=400)
 
 ```
+
+The server is now ready to provide all the functions that the web clients will need.
+
 
 Next -> [Step 9 - Populating the pod select]
 

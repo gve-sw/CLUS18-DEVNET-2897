@@ -1,7 +1,7 @@
 ### Step 11 - Populating the interface selects
 
 Lets work on the interfaces. First, add the javascript function that will retrieve the interfaces for
-a given switch
+a given switch.  You **must** define this within the appModule.controller code block:
 
 ```javascript
     $scope.getInterfaces = function(selected_switch){
@@ -20,23 +20,8 @@ a given switch
     };
 
 ``` 
-We need to bind the $scope.interfaces variable with the two interface selects.
-For the select id="sel_port1" add this attribute
 
-```html
-ng-options="interface as interface.l1PhysIf.attributes.id for interface in interfaces1 track by interface.l1PhysIf.attributes.dn"
-```
-
-And for select id="sel_port2_pc" add this attribute:
-```html
-ng-options="interface as interface.l1PhysIf.attributes.id for interface in interfaces1 track by interface.l1PhysIf.attributes.dn"
-```
-
-The items in these drop down lists depend on what the user selected in the sel_switch list. 
-To trigger the interface collection after a switch is selected we add this to the select id="sel_switch" attributes
-```html
-ng-change="getInterfaces(deployment.selectedSwitch)"
-```
+The $scope.interfaces variable is associated to the interface selects via the ng-option attribute added in step 4.
 
 Next -> [Step 12 - Populating the EPGs/VLANs select]
 

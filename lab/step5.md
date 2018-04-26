@@ -1,9 +1,9 @@
-### Step 5 - Adding the EPG/VLAN options UI
+### Step 5 - Adding the EPG/VLAN options
 
-Now, we will create the interface to select or create a new EPG/VLAN that the ports will be associated.
+We will add to the interface the options to select or create a new EPG/VLAN that the ports will be associated with.
 The following code will create two buttons where the user is going to be able to select if a new EPG needs to be created
 or if an existing one should be used.
-Paste this code below the one added in step 4.
+Copy this code **below** the one added in step 4.
 
 ```html
 <div id="epg-action" class="col-md-12 text-large">
@@ -25,6 +25,10 @@ Paste this code below the one added in step 4.
 </div>
 ```
 
-Next -> [Step 5 - Adding the EPG/VLAN selection and creation UI]
+_Note: Use <kbd>option ⌥</kbd> + <kbd>command ⌘</kbd> + <kbd>L</kbd> to format the HTML file_
 
-[Step 5 - Adding the EPG/VLAN selection and creation UI]: step6.md
+Refresh your browser to see the new section in the screen.
+
+Next -> [Step 6 - Adding the EPG/VLAN selection and creation fields]
+
+[Step 6 - Adding the EPG/VLAN selection and creation fields]: step6.md

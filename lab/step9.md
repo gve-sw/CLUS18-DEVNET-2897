@@ -1,21 +1,22 @@
 ### Step 9 - Populating the pod select
 
 Now that the server is able to accept and reply REST calls with the information about pods, switches and interfaces
-it is time to interact with it using the javascript library Angular JS.
+it is time to interact with it using the javascript library Angular JS. The file that we are going to use to implement 
+that logic is located in _**static/web_app/public/js/angular-modules/app.js**_ 
 
-The file that we are going to use to implement that logic is in static/web_app/public/js/angular-modules/app.js
-We are going to focus on this section to add our code:
+Within the app.js file, we are going to focus only on the section defined at the end:
 
 ```javascript
 // App controller is in charge of managing all services for the application
 appModule.controller('AppController', function($scope, $location, $http, $window, $rootScope){
 
-    (...)
+    // NEW CODE HERE
         
 });
 ```
 
-Lets add a new method, that will get all the pods from the server and store them on memory:
+Lets add a new method, that will get all the pods from the server and store them on memory. You **must** define this
+within the appModule.controller code block:
  
 ```javascript
  $scope.getPods = function(){
@@ -34,15 +35,7 @@ Lets add a new method, that will get all the pods from the server and store them
     $scope.getPods(); 
 ```
 
-Next, we are going to bind that data to the HTML code so that the user can see the pods. 
-In the templates/web_app/home.html, look for the select tag with id="sel_pod" and add the following attribute
-```html
-ng-options="pod as pod.fabricPod.attributes.dn for pod in pods track by pod.fabricPod.attributes.dn" 
-ng-model="deployment.selectedPod"
-```
-
-The ng-options tells Angular to populate the drop down list with the items stored in the $scope.pods 
-variable
+The $scope.pods variable is associated to the pods select via the ng-option attribute added in step 4.
 
 Next -> [Step 10 - Populating the switch select]
 
