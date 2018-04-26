@@ -32,7 +32,7 @@ Copy the following code **below** the one added in step 3
     <div class="form-group">
         <div class="form-group__text select">
             <select id="sel_port1" ng-model="deployment.selectedPort1"
-            ng-options="interface as interface.l1PhysIf.attributes.id for interface in interfaces1 track by interface.l1PhysIf.attributes.dn"></select>
+            ng-options="interface as interface.l1PhysIf.attributes.id for interface in interfaces track by interface.l1PhysIf.attributes.dn"></select>
             <label for="sel_port1">Interface 1</label>
         </div>
     </div>
@@ -40,7 +40,7 @@ Copy the following code **below** the one added in step 3
         <div class="form-group">
             <div class="form-group__text select">
                 <select id="sel_port2_pc" ng-model="deployment.selectedPort2"
-                ng-options="interface as interface.l1PhysIf.attributes.id for interface in interfaces1 track by interface.l1PhysIf.attributes.dn"></select>
+                ng-options="interface as interface.l1PhysIf.attributes.id for interface in interfaces track by interface.l1PhysIf.attributes.dn"></select>
                 <label for="sel_port2_pc">Interface 2</label>
             </div>
         </div>
