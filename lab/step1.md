@@ -14,7 +14,7 @@ Then, create a virtual environment and install requirements
 
 ```bash
 cd $HOME/CLUS18-DEVNET-2897
-virtualenv devnet2897
+virtualenv --python=python3 devnet2897
 source devnet2897/bin/activate
 pip install -r requirements.txt
 ```
