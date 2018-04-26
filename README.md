@@ -20,8 +20,6 @@ For your reference, we are going to use the following frameworks
 * Angular JS Framework - https://angularjs.org/ 
 * Cisco UI Framework - https://developer.cisco.com/site/uiux/ 
 
-### Step  - Adding authentication HTML interface
-
-### Step  - Adding authentication API to the server
-
-### Step  - Enforcing authentication using Angular JS
+[Get Started!]
+ 
+[Get Started!]: lab/step1.md
