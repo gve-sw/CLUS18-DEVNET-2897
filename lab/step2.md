@@ -1,5 +1,5 @@
 
-### Step 2 - Navigating the solution directories and running the server
+### Step 2 - Running the server
 
 From the Applications folder, open PyCharm. This is a useful integrated development environment (IDE) that we will use
 to edit different files. 

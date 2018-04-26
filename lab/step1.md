@@ -19,7 +19,7 @@ source devnet2897/bin/activate
 pip install -r requirements.txt
 ```
 
-Previous [Introduction]--------------------------------------------------------- Next - [Step 2]   
+Previous [Introduction]                                                               Next [Step 2 - Running the server]   
 
-[Step 2]: step2.m
+[Step 2 - Running the server]: step2.md
 [Introduction]: ../README.md
