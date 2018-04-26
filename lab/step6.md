@@ -29,7 +29,7 @@ _Note: Use <kbd>option ⌥</kbd> + <kbd>command ⌘</kbd> + <kbd>L</kbd> to form
 
 Refresh your browser to see the new section in the screen.
 
-![step_6](lab/images/step6.png)
+![step_6](images/step6.png)
 
 Next -> [Step 7 - Adding the deploy button]
 
