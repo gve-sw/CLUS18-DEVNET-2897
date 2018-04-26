@@ -3,10 +3,14 @@ The only thing that is missing is the "Deploy" button.
  After the code added in step 6, copy the following:
 
 ```html
-<button id="btnDeploy" class="btn btn--success" style="float:right" ng-disabled="loading"
-ng-click="deploy();" >
-Deploy
-</button>
+<div class="col-md-12 text-large">
+    <br/>
+    <button id="btnDeploy" class="btn btn--success" style="float:right"
+            ng-disabled="loading"
+            ng-click="deploy();">
+        Deploy
+    </button>
+</div>
 ```
 
 This will create the button and will place it in the correct  position.

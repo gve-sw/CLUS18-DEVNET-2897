@@ -7,6 +7,7 @@ selection of existing EPG/VLAN, a drop down list must be used.
 Copy the following code **below** the one added in step 5, this will create the text box and the drop down list needed
 ```html
 <div id="epg-data" class="col-md-12 text-large">
+    <br/>
     <div id="existing_epg_selection" class="form-group">
         <div class="form-group__text select ">
             <select id="sel_epg" name="sel_epg" ng-model="deployment.selectedEpg"
