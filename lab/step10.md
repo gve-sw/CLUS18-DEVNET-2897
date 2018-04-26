@@ -1,4 +1,4 @@
-### Step 10 - Populating the sel_switch select with options
+### Step 10 - Populating the switch select
 
 We should do the same thing for switches drop down list. This method will get that information from the server
 
@@ -35,3 +35,8 @@ in the home.html file
 ng-change="getSwitches(deployment.selectedPod)"
 ```
 Using ng-change, the method getSwitches is executed each time that the selection changes.
+
+
+Next -> [Step 11 - Populating the interface selects]
+
+[Step 11 - Populating the interface selects]: step11.md

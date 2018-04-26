@@ -1,4 +1,4 @@
-### Step 9 - Populating the sel_pod drop down list with options
+### Step 9 - Populating the pod select
 
 Now that the server is able to accept and reply REST calls with the information about pods, switches and interfaces
 it is time to interact with it using the javascript library Angular JS.
@@ -43,3 +43,7 @@ ng-model="deployment.selectedPod"
 
 The ng-options tells Angular to populate the drop down list with the items stored in the $scope.pods 
 variable
+
+Next -> [Step 10 - Populating the switch select]
+
+[Step 10 - Populating the switch select]: step10.md

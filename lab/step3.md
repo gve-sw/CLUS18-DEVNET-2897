@@ -1,4 +1,4 @@
-### Step 3 - Adding the port type HTML interface
+### Step 3 - Adding the port type UI
 
 Its coding time! The first thing that we want to do is to define which type of port we want to create. We could create
 an access port, a port channel or a virtual port channel. For simplicity, we are going to implement the first two.
@@ -31,3 +31,7 @@ Copy the following code in the templates/web_app/home.html file. You must includ
 This add a section with a header and two buttons that will be used to choose the port type to deploy.
 
 ```Note: After you paste the code, use <kbd>option ⌥</kbd> + <kbd>command ⌘</kbd> + <kbd>L</kbd> to format the HTML file``
+
+Next -> [Step 4 - Adding the port selection IU]
+
+[Step 4 - Adding the port selection IU]: step4.md

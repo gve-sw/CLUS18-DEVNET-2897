@@ -1,4 +1,4 @@
-### Step 6 - Adding the EPG/VLAN selection and creation HTML interface
+### Step 6 - Adding the EPG/VLAN selection and creation UI
 
 In this step, we have to build the interface for the two options in the step 5. 
 In the case of creation, a text box where the user can insert the VLAN number should be fine; however, for the 
@@ -21,3 +21,8 @@ Paste the following code below the one added in step 5, this will create the tex
     </div>
 </div>
 ```
+
+
+Next -> [Step 7 - Adding the EPG/VLAN selection and creation UI]
+
+[Step 7 - Adding the EPG/VLAN selection and creation UI]: step6.md

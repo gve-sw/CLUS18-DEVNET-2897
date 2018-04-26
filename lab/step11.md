@@ -1,4 +1,4 @@
-### Step 11 - Populating the interfaces drop down lists with options
+### Step 11 - Populating the interface selects
 
 Lets work on the interfaces. First, add the javascript function that will retrieve the interfaces for
 a given switch
@@ -37,3 +37,7 @@ To trigger the interface collection after a switch is selected we add this to th
 ```html
 ng-change="getInterfaces(deployment.selectedSwitch)"
 ```
+
+Next -> [Step 12 - Populating the EPGs/VLANs select]
+
+[Step 12 - Populating the EPGs/VLANs select]: step12.md

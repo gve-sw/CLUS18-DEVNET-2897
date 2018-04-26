@@ -1,6 +1,6 @@
-### Step 15 - Conditional user interface with angular JS
+### Step 15 - Dynamic user interface
 
-Conditional user interface means to show or hide things according to the value of different variables.
+Dynamic user interface means to show or hide things according to the value of different variables.
  For example, it doesn't make too much sense to show the "Interface 2" option if we are not deploying 
 a port channel. 
  
@@ -27,5 +27,6 @@ ng-if="deployment.epgAction == 'new'"
 
 Refresh your browser and you will now be able to hide/show elements according to the selection made
 
-Previous [Step 14] ---------------------------------------------------------  
-[Step 14]: step14.md
+Next -> [Step 5 - Adding the EPG/VLAN selection and creation UI]
+
+[Step 5 - Adding the EPG/VLAN selection and creation UI]: step6.md

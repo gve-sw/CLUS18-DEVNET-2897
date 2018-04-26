@@ -141,3 +141,7 @@ def api_deploy(request):
         return JSONResponse("Bad request. " + request.method + " is not supported", status=400)
 
 ```
+
+Next -> [Step 9 - Populating the pod select]
+
+[Step 9 - Populating the pod select]: step9.md

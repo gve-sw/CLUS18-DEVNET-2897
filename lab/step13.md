@@ -1,4 +1,4 @@
-### Step 13 - Sending the deployment information to the server
+### Step 13 - Requesting the deployment to the server
 With the pod, switch, interfaces and VLANs we have all the information that we need from the user. We will now code a 
 function in the app.js file that will make that possible:
 
@@ -25,3 +25,8 @@ ng-click="deploy();"
 ```
 
 ng-click will execute the method deploy each time that the button is clicked.
+
+
+Next -> [Step 14 - Test your app]
+
+[Step 14 - Test your app]: step14.md

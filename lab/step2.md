@@ -25,6 +25,7 @@ IPs that are allowed to connect (0.0.0.0 or anyone) with the port where the serv
 
 You can go to http://0.0.0.0:8080/ to see the base layout. You have now a web application up and running in your machine
 
-Previous - [Step 1] --------------------------------------------------------- Next - [Step 3]   
-[Step 3]: step3.md
-[Step 1]: step1.md
+Next -> [Step 3 - Adding the port type UI]
+
+[Step 3 - Adding the port type UI]: step3.md
+

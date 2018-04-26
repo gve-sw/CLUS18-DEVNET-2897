@@ -1,4 +1,4 @@
-### Step 4 - Adding the port selection HTML interface
+### Step 4 - Adding the port selection IU
 
 As we are implementing access and port-channel scenarios we have to include a drop down list for the pods, 
 the switches and the ports.
@@ -40,3 +40,8 @@ lets focus only on the HTML code. Copy the following code below after the one ad
     </div>
 </div>
 ```
+
+
+Next -> [Step 5 - Adding the EPG/VLAN options UI]
+
+[Step 4 - Adding the EPG/VLAN options UI]: step5.md
