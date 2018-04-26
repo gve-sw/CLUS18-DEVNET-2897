@@ -7,7 +7,7 @@ port automation web user interface on top of Cisco ACI
 A company is implementing ACI in its data center. They think the user interface that comes with the solution is great, 
 however they would like to implement the following process:
 
-![Workflow](lab/images/port_Workflow_Diagram.png)
+![Workflow](lab/images/Port_Workflow_Diagram.png)
 
 ## Solution
 
