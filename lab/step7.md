@@ -15,7 +15,7 @@ _Note: Use <kbd>option ⌥</kbd> + <kbd>command ⌘</kbd> + <kbd>L</kbd> to form
 
 Refresh your browser to see the new section in the screen.
 
-![step_7](lab/images/step_7.png)
+![step_7](lab/images/step7.png)
 
 
 Next -> [Step 8 - Preparing server to receive and reply REST API calls]

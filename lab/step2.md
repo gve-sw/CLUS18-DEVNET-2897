@@ -14,7 +14,7 @@ http requests (8080)
 
 You can go to http://0.0.0.0:8080/ to see the base layout. 
 
-![base_layout](lab/images/base_layout.png)
+![base_layout](lab/images/step2.png)
 
 You have a web application up and running in your machine.
 
