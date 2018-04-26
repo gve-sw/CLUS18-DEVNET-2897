@@ -205,12 +205,12 @@ interfaces and EPGs) we need to code API calls in server that can return that in
 Luckily for us, using python is quite easy. Open you urls.py file and copy the following below the last defined URL:
 
 ```python
-# APIs Mappings
-url(r'^api/pod/?$', views.api_pod),
-url(r'^api/switch/get/?$', views.api_switch),
-url(r'^api/interface/get/?$', views.api_interface),
-url(r'^api/epgs/?$', views.api_epg),
-url(r'^api/deploy/?$', views.api_deploy),
+    # APIs Mappings
+    url(r'^api/pod/?$', views.api_pod),
+    url(r'^api/switch/(?P<podDn>.*)/?$', views.api_switch),
+    url(r'^api/interface/(?P<switchDn>.*)/?$', views.api_interface),
+    url(r'^api/epgs/?$', views.api_epg),
+    url(r'^api/deploy/?$', views.api_deploy),
 ```
 Looking into the code above, it is mapping URLs with specific methods that will manage http calls using that URL.
  We will create those methods in the views.py file. Copy these methods in this file (views.py) below ```====================>>>>>>>> APIs <<<<<<<<====================```
@@ -228,8 +228,6 @@ def api_pod(request):
     if request.method == 'GET':
         try:
             apic = ApicController()
-            apic.url = apic_url
-            apic.token = apic_token
             pods = apic.getPods()
             return JSONResponse(pods)
         except Exception as e:
@@ -245,7 +243,7 @@ def api_pod(request):
 
 ```python
 @csrf_exempt
-def api_switch(request):
+def api_switch(request, podDn):
     """
        Return a list of switches
        :param request:
@@ -254,7 +252,7 @@ def api_switch(request):
     if request.method == 'GET':
         try:
             apic = ApicController()
-            switches = apic.getLeafs(pod_dn=payload["pod"]["fabricPod"]["attributes"]["dn"])
+            switches = apic.getLeafs(pod_dn=podDn)
             return JSONResponse(switches)
         except Exception as e:
             print(traceback.print_exc())
@@ -269,7 +267,7 @@ def api_switch(request):
 
 ```python
 @csrf_exempt
-def api_interface(request):
+def api_interface(request, switchDn):
     """
        Return a list of interfaces
        :param request:
@@ -278,7 +276,7 @@ def api_interface(request):
     if request.method == 'GET':
         try:
             apic = ApicController()
-            interfaces = apic.getInterfaces(switch_dn=payload["switch"]["fabricNode"]["attributes"]["dn"])
+            interfaces = apic.getInterfaces(switch_dn=switchDn)
             return JSONResponse(interfaces)
         except Exception as e:
             print(traceback.print_exc())
@@ -286,6 +284,7 @@ def api_interface(request):
             return JSONResponse({'error': e.__class__.__name__, 'message': str(e)}, status=500)
     else:
         return JSONResponse("Bad request. " + request.method + " is not supported", status=400)
+
 ```
 
 **api_epg method**
@@ -315,6 +314,7 @@ def api_epg(request):
             return JSONResponse({'error': e.__class__.__name__, 'message': str(e)}, status=500)
     else:
         return JSONResponse("Bad request. " + request.method + " is not supported", status=400)
+
 ```
 
 **api_deploy method**
@@ -323,12 +323,7 @@ def api_epg(request):
 @csrf_exempt
 def api_deploy(request):
     """
-   Creates if does not exist:
-   - EPG
-   - App Profile
-   - BD
-   - VRF
-   - Tenant
+   Creates a port deployment in ACI
    :param request:
    :return:
    """
@@ -336,178 +331,7 @@ def api_deploy(request):
         try:
             payload = json.loads(request.body)
             apic = ApicController()
-
-            print("Creating tenant if not present")
-            tenants = apic.getTenants(query_filter='eq(fvTenant.name,"' + PREFIX + '")')
-            if len(tenants) == 0:
-                tenants = apic.createTenant(PREFIX)
-
-            print("Creating application profile if not present")
-            aps = apic.getAppProfiles(tenant_dn=tenants[0]["fvTenant"]["attributes"]["dn"],
-                                      query_filter='eq(fvAp.name,"' + PREFIX + '")')
-            if len(aps) == 0:
-                aps = apic.createAppProfile(tenant_dn=tenants[0]["fvTenant"]["attributes"]["dn"],
-                                            app_prof_name=PREFIX)
-
-            print("Creating VRF if not present")
-            vrfs = apic.getVRFs(tenant_dn=tenants[0]["fvTenant"]["attributes"]["dn"],
-                                query_filter='eq(fvCtx.name,"' + PREFIX + '")')
-
-            if len(vrfs) == 0:
-                vrfs = apic.createVRF(tenant_dn=tenants[0]["fvTenant"]["attributes"]["dn"],
-                                      vrf_name=PREFIX)
-
-            print("Creating Bridge Domain if not present")
-            bds = apic.getBridgeDomains(tenant_dn=tenants[0]["fvTenant"]["attributes"]["dn"],
-                                        query_filter='eq(fvBD.name,"' + PREFIX + '")')
-
-            if len(bds) == 0:
-                bds = apic.createBridgeDomain(tenant_dn=tenants[0]["fvTenant"]["attributes"]["dn"],
-                                              bd_name=PREFIX,
-                                              vrf_name=vrfs[0]["fvCtx"]["attributes"]["name"])
-
-            print("Creating Endpoint Group if not present")
-            if payload["deployment"]["epgAction"] == "new":
-                epgName = payload["deployment"]["epgVlan"]
-            else:
-                epgName = payload["deployment"]["selectedEpg"]["fvAEPg"]["attributes"]["name"]
-            
-            # Check if EPG already exists
-            epgs = apic.getEPGs(ap_dn=aps[0]["fvAp"]["attributes"]["dn"],
-                                query_filter='eq(fvAEPg.name,"' + epgName + '")')
-            if len(epgs) == 0:
-                # Create only if does not exist
-                epgs = apic.createEPG(ap_dn=aps[0]["fvAp"]["attributes"]["dn"],
-                                      bridge_domain_name=bds[0]["fvBD"]["attributes"]["name"],
-                                      epg_name=epgName)
-
-            print("Creating VLAN Pool if not present")
-            vpools = apic.getVlanPools(query_filter='eq(fvnsVlanInstP.name,"' + PREFIX + '")')
-
-            if len(vpools) == 0:
-                # Create vlan pool
-                vpools = apic.createVlanPool(name=PREFIX)
-
-            print("Add selected VLANs to pool if not present")
-            apic.addVlansToPool(pool_name=vpools[0]["fvnsVlanInstP"]["attributes"]["name"],
-                                from_vlan=epgName, to_vlan=epgName)
-
-            print("Creating Physical Domain if not present")
-            phyDoms = apic.getPhysicalDomains(query_filter='eq(physDomP.name,"' + PREFIX + '")')
-            if len(phyDoms) == 0:
-                phyDoms = apic.createPhysicalDomain(name=PREFIX,
-                                                    vlan_pool_dn=vpools[0]["fvnsVlanInstP"]["attributes"]["dn"])
-
-            print("Creating Attachable Entity Profile if not present")
-            atthEntProfiles = apic.getAttachEntityProfile(query_filter='eq(infraAttEntityP.name,"' + PREFIX + '")')
-            if len(atthEntProfiles) == 0:
-                atthEntProfiles = apic.createAttachEntityProfile(name=PREFIX,
-                                                                 phy_domain_dn=phyDoms[0]["physDomP"]["attributes"][
-                                                                     "dn"])
-            port1 = payload["deployment"]["selectedInterface1"]["l1PhysIf"]["attributes"]["id"].replace(
-                "eth1/", "")
-
-            leaf1_id = payload["deployment"]["selectedSwitch1"]["fabricNode"]["attributes"]["id"]
-
-            if payload["deployment"]["portType"] == "access":
-                # ## Access ##
-                # Create Policy Group default options with attachable entity profile
-                print("**** Deployment Port Type: Access *****")
-                intPolGroups = apic.createAccessInterfacePolicyGroup(
-                    name=PREFIX + "-access",
-                    attEntPro_dn=atthEntProfiles[0]["infraAttEntityP"]["attributes"]["dn"])
-
-                print("Creating Interface Policy if not present")
-                # Create access interface policy
-                intAccessProfiles = apic.createAccessInterfaceProfile(name=PREFIX + "-access-" + port1)
-
-                print("Creating Interface Selector if not present")
-                # Add selected port
-                apic.createInterfaceSelector(
-                    name=payload["deployment"]["selectedInterface1"]["l1PhysIf"]["attributes"]["id"].replace(
-                        "/", "-"),
-                    from_port=port1,
-                    to_port=port1,
-                    interface_profile_dn=intAccessProfiles[0]["infraAccPortP"]["attributes"]["dn"],
-                    interface_policy_group_dn=intPolGroups[0]["infraAccPortGrp"]["attributes"]["dn"])
-
-                print("Creating Switch Profile if not present")
-                # Create switch profile
-                sProfile = apic.createSwitchProfile(name=PREFIX, leaf_id=leaf1_id)
-
-                print("Associating interface profiles to switch profile if not present")
-                # Associate interface profiles to switch profile sw_prof_dn, int_prof_dn
-                apic.associateIntProfToSwProf(
-                    sw_prof_dn=sProfile["infraNodeP"]["attributes"]["dn"],
-                    int_prof_dn=intAccessProfiles[0]["infraAccPortP"]["attributes"]["dn"])
-
-                print("Associating port to EPG if not present")
-                # Associate port to EPG
-                apic.addStaticPortToEpg(
-                    vlan=epgName,
-                    leaf_id=leaf1_id,
-                    port_id=payload["deployment"]["selectedInterface1"]["l1PhysIf"]["attributes"]["id"],
-                    epg_dn=epgs[0]["fvAEPg"]["attributes"]["dn"])
-
-            elif payload["deployment"]["portType"] == "portChannel":
-
-                print("**** Deployment Port Type: PortChannel *****")
-                # ## Port Channel ##
-                port2 = payload["deployment"]["selectedInterface2"]["l1PhysIf"]["attributes"]["id"].replace(
-                    "eth1/", "")
-
-                print("Creating LACP Profile if not present")
-                # make sure lacp_profile exists
-                lapc_prof = apic.addLacpProf(name=PREFIX + '-LACP-ACTIVE')
-
-                print("Creating port channel policy group if not present")
-                # make sure portchannel policy group exists
-                portchannel_policy = apic.addPortchannelIntPolicyGroup(
-                    name=PREFIX + '-portchannel',
-                    att_ent_prof_dn=atthEntProfiles[0]["infraAttEntityP"]["attributes"]["dn"],
-                    lacp_prof_name=lapc_prof["lacpLagPol"]["attributes"]["name"])
-
-                print("Creating port channel profile if not present")
-                # make sure portchannel profile exists for port 1
-                portchannel_profile = apic.addPortchannelIntProfile(
-                    name=PREFIX + '-portchannel-' + port1 + '-' + port2)
-
-                print("Creating Interface Selector for interfaces if not present")
-                # Add selected port1
-                apic.createInterfaceSelector(
-                    name=payload["deployment"]["selectedInterface1"]["l1PhysIf"]["attributes"]["id"].replace(
-                        "/", "-"),
-                    from_port=port1,
-                    to_port=port1,
-                    interface_profile_dn=portchannel_profile["infraAccPortP"]["attributes"]["dn"],
-                    interface_policy_group_dn=portchannel_policy["infraAccBndlGrp"]["attributes"]["dn"])
-
-                # Add selected port2
-                apic.createInterfaceSelector(
-                    name=payload["deployment"]["selectedInterface2"]["l1PhysIf"]["attributes"]["id"].replace(
-                        "/", "-"),
-                    from_port=port2,
-                    to_port=port2,
-                    interface_profile_dn=portchannel_profile["infraAccPortP"]["attributes"]["dn"],
-                    interface_policy_group_dn=portchannel_policy["infraAccBndlGrp"]["attributes"]["dn"])
-
-                print("Creating Switch Profile if not present")
-                # Create switch Profile
-                sProfile = apic.createSwitchProfile(name=PREFIX, leaf_id=leaf1_id)
-
-                print("Associating interface profiles to switch profile if not present")
-                # Associate interface profiles to switch profile sw_prof_dn, int_prof_dn
-                apic.associateIntProfToSwProf(
-                    sw_prof_dn=sProfile["infraNodeP"]["attributes"]["dn"],
-                    int_prof_dn=portchannel_profile["infraAccPortP"]["attributes"]["dn"])
-
-                print("Associating port to EPG if not present")
-                # Associate port to EPG
-                apic.addStaticPortchannelToEpg(
-                    vlan=epgName,
-                    leaf_id=leaf1_id,
-                    portchannel_pol_grp_name=portchannel_policy["infraAccBndlGrp"]["attributes"]["name"],
-                    epg_dn=epgs[0]["fvAEPg"]["attributes"]["dn"])
+            apic.createDeployment(payload, PREFIX)
 
             print("Deployment Done!")
             return JSONResponse("ok")
@@ -517,16 +341,175 @@ def api_deploy(request):
             return JSONResponse({'error': e.__class__.__name__, 'message': str(e)}, status=500)
     else:
         return JSONResponse("Bad request. " + request.method + " is not supported", status=400)
+
 ```
 
-### Step 9 - Using Angular JS to interact with the server
+### Step 9 - Populating the sel_pod drop down list with options
 
-### Step 10 - Conditional user interface with angular JS
+Now that the server is able to accept and reply REST calls with the information about pods, switches and interfaces
+it is time to interact with it using the javascript library Angular JS.
 
-### Step 11 - Adding authentication HTML interface
+The file that we are going to use to implement that logic is in static/web_app/public/js/angular-modules/app.js
+We are going to focus on this section to add our code:
 
-### Step 12 - Adding authentication API to the server
+```javascript
+// App controller is in charge of managing all services for the application
+appModule.controller('AppController', function($scope, $location, $http, $window, $rootScope){
 
-### Step 13 - Enforcing authentication using Angular JS
+    (...)
+        
+});
+```
+
+Lets add a new method, that will get all the pods from the server and store them on memory:
+ 
+```javascript
+ $scope.getPods = function(){
+        $http
+            .get('api/pod')
+            .then(function (response, status, headers, config){
+                $scope.pods = response.data
+            })
+            .catch(function(response, status, headers, config){
+                $scope.error = response.data.message
+            })
+            .finally(function(){
+            })
+    };
+    
+    $scope.getPods(); 
+```
+
+Next, we are going to bind that data to the HTML code so that the user can see the pods. 
+In the templates/web_app/home.html, look for the select tag with id="sel_pod" and add the following attribute
+```html
+ng-options="pod as pod.fabricPod.attributes.dn for pod in pods track by pod.fabricPod.attributes.dn" 
+ng-model="deployment.selectedPod"
+```
+
+The ng-options tells Angular to populate the drop down list with the items stored in the $scope.pods 
+variable
+
+
+### Step 10 - Populating the sel_switch select with options
+
+We should do the same thing for switches drop down list. This method will get that information from the server
+
+ 
+```javascript
+$scope.getSwitches = function(pod){
+        if(pod.fabricPod){
+            $http
+                .get('api/switch/' + pod.fabricPod.attributes.dn)
+                .then(function (response, status, headers, config){
+                    $scope.switches = response.data
+                })
+                .catch(function(response, status, headers, config){
+                    $scope.error = response.data.message
+                })
+                .finally(function(){
+                })
+        }
+    };
+ 
+```
+
+Bind the $scope.switches variable to the select sel_switches for the user to see them adding this attribute:
+
+```html
+ng-options="switch as switch.fabricNode.attributes.name for switch in switches track by switch.fabricNode.attributes.dn"
+ng-model="deployment.selectedSwitch"
+```
+
+There is a catch though. In order to get the switches we need to select a pod first; we can simple instruct the
+sel_pod element to execute this method when changed. Add these two attributes to the sel_pod element in the home.html
+file
+
+```html
+ng-change="getSwitches(deployment.selectedPod)"
+```
+ng-model is the variable where the selected item is going to be saved. ng-change is executed each time that the
+ selection is changed and is set to the name of the method that we created before.
+
+### Step 11 - Populating the interfaces drop down lists with options
+
+Finally, we got the interfaces. The items in these drop down lists depends on what the user selected 
+in the sel_switch list. Lets start adding the javascript function that will retrieve the interfaces for
+a given switch
+
+```javascript
+    $scope.getInterfaces = function(selected_switch){
+        if(selected_switch.fabricNode){
+            $http
+                .get('api/interface/' + selected_switch.fabricNode.attributes.dn )
+                .then(function (response, status, headers, config){
+                    $scope.interfaces = response.data
+                })
+                .catch(function(response, status, headers, config){
+                    $scope.error = response.data.message
+                })
+                .finally(function(){
+                })
+        }
+    };
+
+```
+
+We need to bind the $scope.interfaces variable with the two interface selects.
+For the select id="sel_port1" add these attributes
+
+```html
+ng-options="interface as interface.l1PhysIf.attributes.id for interface in interfaces1 track by interface.l1PhysIf.attributes.dn"
+ng-model="deployment.selectedPort1"
+```
+
+And for select id="sel_port2_pc" add these:
+```html
+ng-options="interface as interface.l1PhysIf.attributes.id for interface in interfaces1 track by interface.l1PhysIf.attributes.dn"
+ng-model="deployment.selectedPort2"
+```
+
+To trigger the interface collection after a switch is selected we add these to the select id="sel_switch" attributes
+```html
+ng-change="getInterfaces(deployment.selectedSwitch)"
+```
+
+### Step 12 - Populating the EPGs/VLANs drop down list with options
+
+The last drop down list to populate is the EPGs/VLANs. Since this is not dependent on any other previous selection
+it is simpler. Add the following javascript to the app.js file 
+
+```javascript
+$scope.getEpgs = function(){
+        $http
+            .get('api/epgs')
+            .then(function (response, status, headers, config){
+                $scope.epgs = response.data
+            })
+            .catch(function(response, status, headers, config){
+                $scope.error = response.data.message
+            })
+            .finally(function(){
+            })
+    };
+    
+    $scope.getEpgs();
+```
+
+Bind the $scope.epgs variable to the HTML adding the following attributes to the select id="sel_epg"
+```html
+ng-options="epg as epg.fvAEPg.attributes.name for epg in epgs track by epg.fvAEPg.attributes.name" 
+ng-model="deployment.selectedEpg"
+```
+
+### Step  - Conditional user interface with angular JS
+
+
+
+### Step  - Adding authentication HTML interface
+
+### Step  - Adding authentication API to the server
+
+### Step  - Enforcing authentication using Angular JS
 
 
