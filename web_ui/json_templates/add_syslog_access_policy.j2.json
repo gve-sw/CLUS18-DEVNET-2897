@@ -1,0 +1,21 @@
+{
+  "syslogSrc": {
+    "attributes": {
+      "dn": "uni/infra/moninfra-default/slsrc-conf-converter",
+      "name": "conf-converter",
+      "rn": "slsrc-conf-converter",
+      "status": "created"
+    },
+    "children": [
+      {
+        "syslogRsDestGroup": {
+          "attributes": {
+            "tDn": "uni/fabric/slgroup-groupte-conf-converter",
+            "status": "created"
+          },
+          "children": []
+        }
+      }
+    ]
+  }
+}

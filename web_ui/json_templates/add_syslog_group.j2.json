@@ -1,0 +1,64 @@
+{
+  "syslogGroup": {
+    "attributes": {
+      "dn": "uni/fabric/slgroup-conf-converter",
+      "name": "groupte-conf-converter",
+      "rn": "slgroup-conf-converter",
+      "status": "created"
+    },
+    "children": [
+      {
+        "syslogConsole": {
+          "attributes": {
+            "dn": "uni/fabric/slgroup-conf-converter/console",
+            "rn": "console",
+            "status": "created"
+          },
+          "children": []
+        }
+      },
+      {
+        "syslogFile": {
+          "attributes": {
+            "dn": "uni/fabric/slgroup-conf-converter/file",
+            "rn": "file",
+            "status": "created"
+          },
+          "children": []
+        }
+      },
+      {
+        "syslogProf": {
+          "attributes": {
+            "dn": "uni/fabric/slgroup-conf-converter/prof",
+            "rn": "prof",
+            "status": "created"
+          },
+          "children": []
+        }
+      },
+      {
+        "syslogRemoteDest": {
+          "attributes": {
+            "dn": "uni/fabric/slgroup-conf-converter/rdst-{{ syslog_ip }}",
+            "host": "{{ syslog_ip }}",
+            "name": "conf-converter",
+            "rn": "rdst-{{ syslog_ip }}",
+            "status": "created"
+          },
+          "children": [
+            {
+              "fileRsARemoteHostToEpg": {
+                "attributes": {
+                  "tDn": "uni/tn-mgmt/mgmtp-default/oob-default",
+                  "status": "created"
+                },
+                "children": []
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

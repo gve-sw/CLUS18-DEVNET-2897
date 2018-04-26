@@ -9,6 +9,22 @@ however they would like to implement the following process:
 
 ![Workflow](lab/images/Port_Workflow_Diagram.png)
 
+
+In order to get this done in ACI we will need to create:
+ * Switch profiles
+ * Interface policies
+ * Interface policy groups
+ * Tenants
+ * Application profiles
+ * End point groups
+ * Bridge domains
+ * VRFs
+ * VLAN pools
+ * Attachable entity profiles
+ * Physical domains
+
+How we can create all these objects if we must align with the process defined above?
+
 ## Solution
 
 In order to support this workflow, a simplified web user interface that abstract all the objects that 
@@ -22,6 +38,8 @@ For your reference, we are going to use the following frameworks
 * django Web Framework - https://www.djangoproject.com/
 * Angular JS Framework - https://angularjs.org/ 
 * Cisco UI Framework - https://developer.cisco.com/site/uiux/ 
+
+At the end of the lab, you will have a fully functional web app that can interact with Cisco ACI.
 
 [Get Started!]
  

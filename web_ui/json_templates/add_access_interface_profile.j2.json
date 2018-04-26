@@ -1,0 +1,11 @@
+{
+  "infraAccPortP": {
+    "attributes": {
+      "dn": "uni/infra/accportprof-{{name}}",
+      "name": "{{name}}",
+      "rn": "accportprof-{{name}}",
+      "status": "created,modified"
+    },
+    "children": []
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "snmpGroup": {
+    "attributes": {
+      "dn": "uni/fabric/snmpgroup-snmp-conf-converter",
+      "name": "snmp-conf-converter",
+      "rn": "snmpgroup-snmp-conf-converter",
+      "status": "created"
+    },
+    "children": [
+      {
+        "snmpTrapDest": {
+          "attributes": {
+            "dn": "uni/fabric/snmpgroup-snmp-conf-converter/trapdest-{{ snmp_ip }}-port-{{ snmp_port }}",
+            "host": "{{ snmp_ip }}",
+            "secName": "{{ snmp_community_name }}",
+            "rn": "trapdest-{{ snmp_ip }}-port-{{ snmp_port }}",
+            "status": "created"
+          },
+          "children": [
+            {
+              "fileRsARemoteHostToEpg": {
+                "attributes": {
+                  "tDn": "uni/tn-mgmt/mgmtp-default/oob-default",
+                  "status": "created"
+                },
+                "children": []
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

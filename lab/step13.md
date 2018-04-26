@@ -21,7 +21,8 @@ function in the app.js file that will make that possible.
     };
 ```
 
-The **Deploy** button has a ng-click attribute that will execute the method _**deploy**_ each time that the button is clicked.
+The **Deploy** button has a ng-click attribute that will execute the method _**deploy**_ each time that the 
+button is pressed.
 
 
 Next -> [Step 14 - Test your app]

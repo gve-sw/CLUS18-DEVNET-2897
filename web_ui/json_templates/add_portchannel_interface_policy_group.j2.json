@@ -1,0 +1,30 @@
+{
+  "infraAccBndlGrp": {
+    "attributes": {
+      "dn": "uni/infra/funcprof/accbundle-{{ name }}",
+      "name": "{{ name }}",
+      "rn": "accbundle-{{ name }}",
+      "status": "created"
+    },
+    "children": [
+      {
+        "infraRsAttEntP": {
+          "attributes": {
+            "tDn": "{{ att_ent_prof_dn }}",
+            "status": "created,modified"
+          },
+          "children": []
+        }
+      },
+      {
+        "infraRsLacpPol": {
+          "attributes": {
+            "tnLacpLagPolName": "{{ lacp_prof_name }}",
+            "status": "created,modified"
+          },
+          "children": []
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "aaaTacacsPlusProvider": {
+    "attributes": {
+      "dn": "uni/userext/tacacsext/tacacsplusprovider-{{ tacacs_ip }}",
+      "name": "{{ tacacs_ip }}",
+      "key": "{{ tacacs_password }}",
+      "rn": "tacacsplusprovider-{{ tacacs_ip }}",
+      "status": "created"
+    },
+    "children": [
+      {
+        "aaaRsSecProvToEpg": {
+          "attributes": {
+            "tDn": "uni/tn-mgmt/mgmtp-default/oob-default",
+            "status": "created"
+          },
+          "children": []
+        }
+      }
+    ]
+  }
+}

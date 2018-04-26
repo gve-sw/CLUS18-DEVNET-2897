@@ -1,0 +1,34 @@
+{
+  "datetimePol": {
+    "attributes": {
+      "dn": "uni/fabric/time-conf-converter",
+      "name": "conf-converter",
+      "rn": "time-conf-converter",
+      "status": "created"
+    },
+    "children": [
+      {
+        "datetimeNtpProv": {
+          "attributes": {
+            "dn": "uni/fabric/time-conf-converter/ntpprov-{{ ntp_ip }}",
+            "name": "{{ ntp_ip }}",
+            "preferred": "true",
+            "rn": "ntpprov-{{ ntp_ip }}",
+            "status": "created"
+          },
+          "children": [
+            {
+              "datetimeRsNtpProvToEpg": {
+                "attributes": {
+                  "tDn": "uni/tn-mgmt/mgmtp-default/oob-default",
+                  "status": "created"
+                },
+                "children": []
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "infraAccPortGrp": {
+    "attributes": {
+      "dn": "uni/infra/funcprof/accportgrp-{{name}}",
+      "name": "{{name}}",
+      "rn": "accportgrp-{{name}}",
+      "status": "created"
+    },
+    "children": [
+      {
+        "infraRsAttEntP": {
+          "attributes": {
+            "tDn": "{{atth_ent_prof_dn}}",
+            "status": "created,modified"
+          },
+          "children": []
+        }
+      }
+    ]
+  }
+}

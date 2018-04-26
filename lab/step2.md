@@ -13,6 +13,9 @@ IPs that are allowed to connect (0.0.0.0 means anyone) with the port where the s
 http requests (8080)
 
 You can go to http://0.0.0.0:8080/ to see the base layout. 
+
+![base_layout](lab/images/base_layout.png)
+
 You have a web application up and running in your machine.
 
 Next -> [Step 3 - Adding the port type UI]

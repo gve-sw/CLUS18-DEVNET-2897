@@ -1,0 +1,11 @@
+{
+  "snmpCommunityP": {
+    "attributes": {
+      "dn": "uni/fabric/snmppol-default/community-{{ community_name }}",
+      "name": "{{ community_name }}",
+      "status": "created",
+      "rn": "community-{{ community_name }}"
+    },
+    "children": []
+  }
+}

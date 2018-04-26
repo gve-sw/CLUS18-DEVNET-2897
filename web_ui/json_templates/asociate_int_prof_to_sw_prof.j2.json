@@ -1,0 +1,9 @@
+{
+  "infraRsAccPortP": {
+    "attributes": {
+      "tDn": "{{ int_prof_dn }}",
+      "status": "created,modified"
+    },
+    "children": []
+  }
+}

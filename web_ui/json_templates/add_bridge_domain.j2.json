@@ -1,0 +1,23 @@
+{
+  "fvBD": {
+    "attributes": {
+      "dn": "{{tenant_dn}}/BD-{{name}}",
+      "arpFlood": "{{arp_flood}}",
+      "unkMacUcastAct": "{{unk_mac_uni_action}}",
+      "name": "{{name}}",
+      "rn": "BD-{{name}}",
+      "status": "created"
+    },
+    "children": [
+      {
+        "fvRsCtx": {
+          "attributes": {
+            "tnFvCtxName": "{{ vrf_name }}",
+            "status": "created,modified"
+          },
+          "children": []
+        }
+      }
+    ]
+  }
+}

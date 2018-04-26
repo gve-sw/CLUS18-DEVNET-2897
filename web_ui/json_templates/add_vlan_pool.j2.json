@@ -1,0 +1,12 @@
+{
+  "fvnsVlanInstP": {
+    "attributes": {
+      "dn": "uni/infra/vlanns-[{{ name }}]-{{ allocation_mode }}",
+      "name": "{{ name }}",
+      "allocMode": "{{ allocation_mode }}",
+      "rn": "vlanns-[{{ name }}]-static",
+      "status": "created"
+    },
+    "children": []
+  }
+}

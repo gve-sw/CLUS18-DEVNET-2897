@@ -1,0 +1,21 @@
+{
+  "fvAEPg": {
+    "attributes": {
+      "dn": "{{ap_dn}}/epg-{{name}}",
+      "name": "{{name}}",
+      "rn": "epg-{{name}}",
+      "status": "created"
+    },
+    "children": [
+      {
+        "fvRsBd": {
+          "attributes": {
+            "tnFvBDName": "{{ bridge_domain_name }}",
+            "status": "created,modified"
+          },
+          "children": []
+        }
+      }
+    ]
+  }
+}

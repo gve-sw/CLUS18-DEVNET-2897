@@ -10,6 +10,21 @@ attribute
 ```html
 ng-if="deployment.portType == 'portChannel'"
 ```
+
+It should look like this:
+```html
+<div id="interface_2_selection" 
+      ng-if="deployment.portType == 'portChannel'">
+    <div class="form-group">
+        <div class="form-group__text select">
+            <select id="sel_port2_pc" ng-model="deployment.selectedPort2"
+            ng-options="interface as interface.l1PhysIf.attributes.id for interface in interfaces1 track by interface.l1PhysIf.attributes.dn"></select>
+            <label for="sel_port2_pc">Interface 2</label>
+        </div>
+    </div>
+</div>
+```
+
 This will make that everything inside this div section to not be shown unless the port type is set to portChannel
 
 Same thing applies to the EPGs/VLANs. If we select "Existing EPG/VLAN" we shouldn't see the New EPG/VLAN field; in 
@@ -20,11 +35,37 @@ To implement this, look for the div tag with **id="existing_epg_selection"** and
 ng-if="deployment.epgAction == 'existing'"
 ```
 
+It should look like this:
+
+```html
+    <div id="existing_epg_selection" class="form-group">
+        <div class="form-group__text select ">
+            <select id="sel_epg" name="sel_epg" ng-model="deployment.selectedEpg"
+            ng-options="epg as epg.fvAEPg.attributes.name for epg in epgs track by epg.fvAEPg.attributes.name"
+            ng-if="deployment.epgAction == 'existing'"></select>
+            <label for="sel_epg">Existing EPG/VLAN</label>
+        </div>
+    </div>
+```
+
 Then, look for the div tag with **id="new_epg_selection"** and add this attribute
 
 ```html
 ng-if="deployment.epgAction == 'new'"
 ```
+
+It should look like this:
+
+```html
+    <div id="new_epg_selection" class="form-group">
+        <div class="form-group__text">
+            <input id="epg" type="text" ng-model="deployment.selectedEpg" type="number"
+            ng-if="deployment.epgAction == 'new'">
+            <label for="epg">New EPG/VLAN</label>
+        </div>
+    </div>
+```
+
 
 Refresh your browser and you will be able to hide/show elements according to the VLAN or Port type selection
 

@@ -1,0 +1,13 @@
+{
+  "lacpLagPol": {
+    "attributes": {
+      "dn": "uni/infra/lacplagp-{{ name }}",
+      "ctrl": "fast-sel-hot-stdby,graceful-conv,susp-individual",
+      "mode": "active",
+      "name": "{{ name }}",
+      "rn": "lacplagp-{{ name }}",
+      "status": "created"
+    },
+    "children": []
+  }
+}

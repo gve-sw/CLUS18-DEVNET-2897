@@ -1,0 +1,24 @@
+{
+  "aaaLoginDomain": {
+    "attributes": {
+      "dn": "uni/userext/logindomain-conf_converter",
+      "name": "conf_converter",
+      "rn": "logindomain-conf_converter",
+      "status": "created"
+    },
+    "children": [
+      {
+        "aaaDomainAuth": {
+          "attributes": {
+            "dn": "uni/userext/logindomain-conf_converter/domainauth",
+            "realm": "tacacs",
+            "providerGroup": "conf-converter",
+            "rn": "domainauth",
+            "status": "created"
+          },
+          "children": []
+        }
+      }
+    ]
+  }
+}

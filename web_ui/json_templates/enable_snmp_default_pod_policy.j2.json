@@ -1,0 +1,9 @@
+{
+  "snmpPol": {
+    "attributes": {
+      "dn": "uni/fabric/snmppol-default",
+      "adminSt": "enabled"
+    },
+    "children": []
+  }
+}

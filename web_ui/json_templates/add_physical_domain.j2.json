@@ -1,0 +1,21 @@
+{
+  "physDomP": {
+    "attributes": {
+      "dn": "uni/phys-{{name}}",
+      "name": "{{name}}",
+      "rn": "phys-{{name}}",
+      "status": "created"
+    },
+    "children": [
+      {
+        "infraRsVlanNs": {
+          "attributes": {
+            "tDn": "{{vlan_pool_dn}}",
+            "status": "created"
+          },
+          "children": []
+        }
+      }
+    ]
+  }
+}

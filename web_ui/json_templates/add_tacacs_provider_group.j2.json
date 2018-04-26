@@ -1,0 +1,24 @@
+{
+  "aaaTacacsPlusProviderGroup": {
+    "attributes": {
+      "dn": "uni/userext/tacacsext/tacacsplusprovidergroup-conf-converter",
+      "name": "conf-converter",
+      "rn": "tacacsplusprovidergroup-conf-converter",
+      "status": "created"
+    },
+    "children": [
+      {
+        "aaaProviderRef": {
+          "attributes": {
+            "dn": "uni/userext/tacacsext/tacacsplusprovidergroup-conf-converter/providerref-{{ tacacs_ip }}",
+            "name": "{{ tacacs_ip }}",
+            "order": "1",
+            "rn": "providerref-{{ tacacs_ip }}",
+            "status": "created"
+          },
+          "children": []
+        }
+      }
+    ]
+  }
+}

@@ -52,6 +52,8 @@ _Note: Use <kbd>option ⌥</kbd> + <kbd>command ⌘</kbd> + <kbd>L</kbd> to form
 
 Refresh your browser to see the new section in the screen.
 
+![step_4](lab/images/step_4.png)
+
 Next -> [Step 5 - Adding the EPG/VLAN options]
 
 [Step 5 - Adding the EPG/VLAN options]: step5.md

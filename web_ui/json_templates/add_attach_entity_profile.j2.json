@@ -1,0 +1,40 @@
+{
+  "infraInfra": {
+    "attributes": {
+      "dn": "uni/infra",
+      "status": "modified"
+    },
+    "children": [
+      {
+        "infraAttEntityP": {
+          "attributes": {
+            "dn": "uni/infra/attentp-{{name}}",
+            "name": "{{name}}",
+            "rn": "attentp-{{name}}",
+            "status": "created"
+          },
+          "children": [
+            {
+              "infraRsDomP": {
+                "attributes": {
+                  "tDn": "{{ phy_domain_dn }}",
+                  "status": "created"
+                },
+                "children": []
+              }
+            }
+          ]
+        }
+      },
+      {
+        "infraFuncP": {
+          "attributes": {
+            "dn": "uni/infra/funcprof",
+            "status": "modified"
+          },
+          "children": []
+        }
+      }
+    ]
+  }
+}

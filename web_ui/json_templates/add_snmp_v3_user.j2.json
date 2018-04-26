@@ -1,0 +1,19 @@
+{
+  "snmpUserP": {
+    "attributes": {
+      "dn": "uni/fabric/snmppol-default/user-{{ username }}",
+      "name": "{{ username }}",
+      {% if auth_type == "sha" %}
+      "authType": "hmac-sha1-96",
+      {% endif %}
+      {% if priv_type != "none" %}
+      "privType": "{{ priv_type }}",
+      "privKey": "{{ priv_key }}",
+      {% endif %}
+      "authKey": "{{ auth_key }}",
+      "rn": "user-{{ username }}",
+      "status": "created"
+    },
+    "children": []
+  }
+}

@@ -10,7 +10,13 @@ Deploy
 ```
 
 This will create the button and will place it in the correct  position.
-Refresh your browser to see the new button in the screen.
+
+_Note: Use <kbd>option ⌥</kbd> + <kbd>command ⌘</kbd> + <kbd>L</kbd> to format the HTML file_
+
+Refresh your browser to see the new section in the screen.
+
+![step_7](lab/images/step_7.png)
+
 
 Next -> [Step 8 - Preparing server to receive and reply REST API calls]
 

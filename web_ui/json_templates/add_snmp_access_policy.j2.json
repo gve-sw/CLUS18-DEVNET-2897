@@ -1,0 +1,22 @@
+{
+  "snmpSrc": {
+    "attributes": {
+      "dn": "uni/infra/moninfra-default/snmpsrc-conf-converter",
+      "incl": "audits,events,faults",
+      "name": "conf-converter",
+      "rn": "snmpsrc-conf-converter",
+      "status": "created"
+    },
+    "children": [
+      {
+        "snmpRsDestGroup": {
+          "attributes": {
+            "tDn": "uni/fabric/snmpgroup-snmp-conf-converter",
+            "status": "created"
+          },
+          "children": []
+        }
+      }
+    ]
+  }
+}

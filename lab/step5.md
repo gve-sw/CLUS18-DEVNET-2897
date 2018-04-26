@@ -29,6 +29,8 @@ _Note: Use <kbd>option ⌥</kbd> + <kbd>command ⌘</kbd> + <kbd>L</kbd> to form
 
 Refresh your browser to see the new section in the screen.
 
+![step_5](lab/images/step_5.png)
+
 Next -> [Step 6 - Adding the EPG/VLAN selection and creation fields]
 
 [Step 6 - Adding the EPG/VLAN selection and creation fields]: step6.md

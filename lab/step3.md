@@ -35,6 +35,8 @@ _Note: After you paste the code, use <kbd>option ⌥</kbd> + <kbd>command ⌘</k
 
 Refresh your browser to see the new components shown in the screen.
 
+![step_3](lab/images/step_3.png)
+
 Next -> [Step 4 - Adding the port selection]
 
 [Step 4 - Adding the port selection]: step4.md

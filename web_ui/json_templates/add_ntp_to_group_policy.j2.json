@@ -1,0 +1,8 @@
+{
+  "fabricRsTimePol": {
+    "attributes": {
+      "tnDatetimePolName": "conf-converter"
+    },
+    "children": []
+  }
+}

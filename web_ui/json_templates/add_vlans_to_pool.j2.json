@@ -1,0 +1,12 @@
+{
+  "fvnsEncapBlk": {
+    "attributes": {
+      "dn": "uni/infra/vlanns-[{{ pool_name }}]-static/from-[vlan-{{ from_vlan }}]-to-[vlan-{{ to_vlan }}]",
+      "from": "vlan-{{ from_vlan }}",
+      "to": "vlan-{{ to_vlan }}",
+      "rn": "from-[vlan-{{ from_vlan }}]-to-[vlan-{{ to_vlan }}]",
+      "status": "created"
+    },
+    "children": []
+  }
+}

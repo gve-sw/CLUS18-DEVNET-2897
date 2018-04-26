@@ -1,0 +1,12 @@
+{
+  "fvRsPathAtt": {
+    "attributes": {
+      "instrImedcy": "immediate",
+      "encap": "vlan-100",
+      "primaryEncap": "vlan-{{ vlan }}",
+      "tDn": "topology/pod-1/paths-{{ leaf_id }}/pathep-[{{ port_id }}]",
+      "status": "created"
+    },
+    "children": []
+  }
+}
