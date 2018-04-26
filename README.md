@@ -4,7 +4,10 @@ port automation web user interface on top of Cisco ACI
 
 ## Use case
 
-TODO: Workflow use and diagram
+A company is implementing ACI in its data center. They think the user interface that comes with the solution is great, 
+however they would like to implement the following process:
+
+![picture alt](images/port_Workflow_Diagram.png "Port deployment workflow")
 
 ## Solution
 
