@@ -1,30 +1,44 @@
 ### Step 14 - Test your app
 
-You are now ready to create your first access and port-channel port configurations in ACI.
+You are now ready to create your first access and port-channel port configurations in ACI. Before start, check that 
+your app is running in the terminal that you used for the step 2 (Running the server). 
+
+If you see that the app is not running anymore, execute the following commands in a terminal:
+
+```bash
+cd $HOME/CLUS18-DEVNET-2897
+python manage.py runserver 0.0.0.0:8080
+```
+
+
+#### Port assignments
  
-| Laptop Number | Ports            | 
-| ------------- |:----------------:|
-| Laptop-1      | 1/24, 1/25, 1/26 |
-| Laptop-2      | 1/27, 1/28, 1/29 |
-| Laptop-3      | 1/30, 1/31, 1/32 |
-| Laptop-4      | 1/33, 1/34, 1/35 |
-| Laptop-5      | 1/36, 1/37, 1/38 |
-| Laptop-6      | 1/39, 1/40, 1/41 |
-| Laptop-7      | 1/42, 1/43, 1/44 |
-| Laptop-8      | 1/45, 1/46, 1/47 |
+| Laptop Number | Switch           | Ports             | 
+| ------------- |:----------------:|:-----------------:|
+| Laptop-1      | leaf-2           | 1/24, 1/25, 1/26  |
+| Laptop-2      | leaf-2           | 1/27, 1/28, 1/29  |
+| Laptop-3      | leaf-2           | 1/30, 1/31, 1/32  |
+| Laptop-4      | leaf-2           | 1/33, 1/34, 1/35  |
+| Laptop-5      | leaf-2           | 1/36, 1/37, 1/38  |
+| Laptop-6      | leaf-2           | 1/39, 1/40, 1/41  |
+| Laptop-7      | leaf-2           | 1/42, 1/43, 1/44  |
+| Laptop-8      | leaf-2           | 1/45, 1/46, 1/47  |
+
+
 
 #### Individual port
 
-1. Select Port Type _Individual_
-2. Choose Pod _topology/pod-1_
-3. Choose switch _leaf-2_
-4. Select your first assigned interface for Interface 1. Leave Interface 2 blank
-5. Choose _New EPG/VLAN_ 
-6. Use VLAN 1001
-7. Press _Deploy_
+1. Open a browser and go to http://0.0.0.0:8080
+2. Select Port Type _Individual_
+3. Choose Pod _topology/pod-1_
+4. Choose switch _leaf-2_
+5. Select your first assigned interface for Interface 1. Leave Interface 2 blank
+6. Choose _New EPG/VLAN_ 
+7. Use VLAN 1001
+8. Press _Deploy_
 
 Go to your terminal to see all the things that are being created in ACI. After you have received a _Deployment Done!_
- go to https://sandboxapicdc.cisco.com/ and loing  using username **admin** and password **ciscopsdt**
+ go to https://sandboxapicdc.cisco.com/ and login using username **admin** and password **ciscopsdt**
  
 1. Click on Tenants
 2. Double click the one that has the same name as your assigned prefix (the prefix is located at the top banner in the web 
@@ -36,14 +50,15 @@ Go to your terminal to see all the things that are being created in ACI. After y
 
 #### Port Channel
 
-1. Select Port Type _Port Channel_
-2. Choose Pod _topology/pod-1_
-3. Choose switch _leaf-2_
-4. Select your second assigned interface for Interface 1. 
-5. Select your third assigned interface for Interface 2.
-5. Choose _Existing EPG/VLAN_ 
-6. Use VLAN 1001
-7. Press _Deploy_
+1. Open a browser and go to http://0.0.0.0:8080
+2. Select Port Type _Port Channel_
+3. Choose Pod _topology/pod-1_
+4. Choose switch _leaf-2_
+5. Select your second assigned interface for Interface 1. 
+6. Select your third assigned interface for Interface 2.
+7. Choose _Existing EPG/VLAN_ 
+8. Use VLAN 1001
+9. Press _Deploy_
 
 Go to your terminal to see all the things that are being created in ACI. After you have received a _Deployment Done!_
  go to https://sandboxapicdc.cisco.com/ and loing  using username **admin** and password **ciscopsdt**

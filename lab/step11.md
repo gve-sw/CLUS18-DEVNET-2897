@@ -1,11 +1,13 @@
 ### Step 11 - Populating the interface selects
 
-Lets work on the interfaces. First, add the javascript function that will retrieve the interfaces for
+Let's work on the interfaces. First, add the JavaScript function that will retrieve the interfaces for
 a given switch.  You **must** define this within the appModule.controller code block:
 
 ```javascript
     $scope.getInterfaces = function(selected_switch){
         if(selected_switch.fabricNode){
+            // Does a GET call to api/interface to get the interfaces list
+            $scope.loading = true;
             $http
                 .get('api/interface/' + selected_switch.fabricNode.attributes.dn )
                 .then(function (response, status, headers, config){
@@ -15,13 +17,14 @@ a given switch.  You **must** define this within the appModule.controller code b
                     $scope.error = response.data.message
                 })
                 .finally(function(){
+                    $scope.loading = false;
                 })
         }
     };
 
 ``` 
 
-The $scope.interfaces variable is associated to the interface selects via the ng-option attribute added in step 4.
+The $scope.interfaces variable is associated to the interface selects via the ng-option attribute defined in the step 4 HTML code.
 
 Next -> [Step 12 - Populating the EPGs/VLANs select]
 

@@ -1,7 +1,7 @@
 ### Step 5 - Adding the EPG/VLAN options
 
-We will add to the interface the options to select or create a new EPG/VLAN that the ports will be associated with.
-The following code will create two buttons where the user is going to be able to select if a new EPG needs to be created
+Let's now add to the interface the options to select or create a new EPG/VLAN that the ports will be associated with.
+The following code defines two buttons where the user is going to be able to select if a new EPG needs to be created
 or if an existing one should be used.
 Copy this code **below** the one added in step 4.
 
@@ -10,6 +10,7 @@ Copy this code **below** the one added in step 4.
     <br/>
     <h4>EPG/VLAN</h4>
     <hr/>
+    <!-- ****** Buttons to select creation or selection of EPG/VLANs ****** -->
     <div class="btn-group">
         <button class="btn btn--primary-ghost sn-type epg-action selected"
                 onclick="$('.epg-action').removeClass('selected');$(this).addClass('selected')"

@@ -56,15 +56,15 @@ appModule.controller('AppController', function($scope, $location, $http, $window
         $scope.deployment.epgAction = epgAction;
     };
 
-    // STEP 9 CODE HERE
+    // STEP 9 CODE BELOW
 
-    // STEP 10 CODE HERE
+    // STEP 10 CODE BELOW
 
-    // STEP 11 CODE HERE
+    // STEP 11 CODE BELOW
 
-    // STEP 12 CODE HERE
+    // STEP 12 CODE BELOW
 
-    // STEP 13 CODE HERE
+    // STEP 13 CODE BELOW
 
 
 });

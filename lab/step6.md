@@ -1,13 +1,13 @@
 ### Step 6 - Adding the EPG/VLAN selection and creation fields
+ 
+In the case of EPG/VLAN creation, a text box where the user can insert the VLAN number should be fine; however, for the 
+selection of existing EPG/VLAN, a drop-down list must be used.
 
-We have to build the fields for the two options done in the step 5. 
-In the case of creation, a text box where the user can insert the VLAN number should be fine; however, for the 
-selection of existing EPG/VLAN, a drop down list must be used.
-
-Copy the following code **below** the one added in step 5, this will create the text box and the drop down list needed
+Copy the following code **below** the one added in step 5, this will create the text box and the drop-down list needed
 ```html
 <div id="epg-data" class="col-md-12 text-large">
     <br/>
+    <!-- ****** Select or insert of EPG/VLANs ****** -->
     <div id="existing_epg_selection" class="form-group">
         <div class="form-group__text select ">
             <select id="sel_epg" name="sel_epg" ng-model="deployment.selectedEpg"

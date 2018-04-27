@@ -5,14 +5,16 @@ Luckily for us, doing this with Python is quite easy. Open you _**web_ui/urls.py
 
 ```python
     # APIs Mappings
-    url(r'^api/pod/?$', views.api_pod),
-    url(r'^api/switch/(?P<podDn>.*)/?$', views.api_switch),
-    url(r'^api/interface/(?P<switchDn>.*)/?$', views.api_interface),
-    url(r'^api/epgs/?$', views.api_epg),
-    url(r'^api/deploy/?$', views.api_deploy),
+    
+    url(r'^api/pod/?$', views.api_pod), # Maps the URL web/api/pod to the method api_pod inside views.py
+    url(r'^api/switch/(?P<podDn>.*)/?$', views.api_switch), # Maps the URL web/api/switch/ to the method api_switch inside views.py
+    url(r'^api/interface/(?P<switchDn>.*)/?$', views.api_interface), # Maps the URL web/api/interface/ to the method api_switch inside views.py
+    url(r'^api/epgs/?$', views.api_epg), # Maps the URL web/api/epg to the method api_epg inside views.py
+    url(r'^api/deploy/?$', views.api_deploy), # Maps the URL web/api/deploy to the method api_deploy inside views.py
 ```
-Looking into the code above, it is mapping URLs with specific methods that will manage http calls using that URL.
- We will create those methods in the _**web_ui/views.py**_ file. Copy the methods below to the end of this file.
+Reading the code above, we can see that it is mapping URLs with specific methods that will manage http calls using that URL.
+ 
+Now, we will create those methods.  Copy the methods below to the end of the _**web_ui/views.py**_ file. 
 
 #### api_pod method
 
@@ -22,20 +24,26 @@ Returns a json with the list of pods
 @csrf_exempt
 def api_pod(request):
     """
-       Return a list of pods
+       Return a json list of pods
        :param request:
        :return:
     """
     if request.method == 'GET':
         try:
+            # Create a new controller
             apic = ApicController()
+            
+            # Get the pods
             pods = apic.getPods()
+            
+            # Send pods to the web client
             return JSONResponse(pods)
         except Exception as e:
             print(traceback.print_exc())
             # return the error to web client
             return JSONResponse({'error': e.__class__.__name__, 'message': str(e)}, status=500)
     else:
+        # return the error to web client
         return JSONResponse("Bad request. " + request.method + " is not supported", status=400)
 
 ```
@@ -48,20 +56,26 @@ Returns a json with the list of switches for a given pod
 @csrf_exempt
 def api_switch(request, podDn):
     """
-       Return a list of switches
+       Return a list of switches for a given pod
        :param request:
        :return:
        """
     if request.method == 'GET':
         try:
+            # Create a new controller
             apic = ApicController()
+            
+            # Get the leaf switches for a given pod 
             switches = apic.getLeafs(pod_dn=podDn)
+            
+            # Send the leaf switches to the web client
             return JSONResponse(switches)
         except Exception as e:
             print(traceback.print_exc())
             # return the error to web client
             return JSONResponse({'error': e.__class__.__name__, 'message': str(e)}, status=500)
     else:
+        # return the error to web client
         return JSONResponse("Bad request. " + request.method + " is not supported", status=400)
 
 ```
@@ -74,20 +88,26 @@ Returns a json with the list of interfaces for a given switch
 @csrf_exempt
 def api_interface(request, switchDn):
     """
-       Return a list of interfaces
+       Return a list of interfaces for a given switch
        :param request:
        :return:
     """
     if request.method == 'GET':
         try:
+            # Create a new controller
             apic = ApicController()
+            
+            # Get the interfaces for a given switch
             interfaces = apic.getInterfaces(switch_dn=switchDn)
+            
+            # Send the interfaces to the web client
             return JSONResponse(interfaces)
         except Exception as e:
             print(traceback.print_exc())
             # return the error to web client
             return JSONResponse({'error': e.__class__.__name__, 'message': str(e)}, status=500)
     else:
+        # return the error to web client
         return JSONResponse("Bad request. " + request.method + " is not supported", status=400)
 
 ```
@@ -106,21 +126,31 @@ def api_epg(request):
    """
     if request.method == 'GET':
         try:
+            # Create a new controller
             apic = ApicController()
+            
+            # Get all tenants for the configured prefix
             tenants = apic.getTenants(query_filter='eq(fvTenant.name,"' + PREFIX + '")')
             if len(tenants) == 0:
                 return JSONResponse([])
+                
+            # Get all application profiles for the tenant
             aps = apic.getAppProfiles(tenant_dn=tenants[0]["fvTenant"]["attributes"]["dn"],
                                       query_filter='eq(fvAp.name,"' + PREFIX + '")')
             if len(aps) == 0:
                 return JSONResponse([])
+            
+            # Get all EPGs from the first application profile
             epgs = apic.getEPGs(ap_dn=aps[0]["fvAp"]["attributes"]["dn"])
+            
+            # Send EPGs to web client
             return JSONResponse(epgs)
         except Exception as e:
             print(traceback.print_exc())
             # return the error to web client
             return JSONResponse({'error': e.__class__.__name__, 'message': str(e)}, status=500)
     else:
+        # return the error to web client
         return JSONResponse("Bad request. " + request.method + " is not supported", status=400)
 
 ```
@@ -139,16 +169,24 @@ def api_deploy(request):
    """
     if request.method == 'POST':
         try:
+            # Parse request body to json
             payload = json.loads(request.body)
+            
+            # Create a new controller
             apic = ApicController()
+            
+            # Create a new deployment
             apic.createDeployment(payload, PREFIX)
             print("Deployment Done!")
+            
+            # Reply ok to the web client
             return JSONResponse("ok")
         except Exception as e:
             print(traceback.print_exc())
             # return the error to web client
             return JSONResponse({'error': e.__class__.__name__, 'message': str(e)}, status=500)
     else:
+        # return the error to web client
         return JSONResponse("Bad request. " + request.method + " is not supported", status=400)
 
 ```

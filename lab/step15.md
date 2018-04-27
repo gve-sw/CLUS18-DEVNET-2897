@@ -2,7 +2,7 @@
 
 Dynamic user interface means to show or hide things according to the value of different variables.
  For example, it doesn't make too much sense to show the "Interface 2" option if we are not deploying 
-a port channel. 
+a port-channel. 
  
 In the _**web_ui/templates/home.html**_ file, look for the div tag with **id="interface_2_selection"** and add this 
 attribute

@@ -8,7 +8,7 @@ cd $HOME/CLUS18-DEVNET-2897
 python manage.py runserver 0.0.0.0:8080
 ```
 
-The command above executes the manage.py file and pass as a parameter the action (runserver) along with the 
+This executes the manage.py file and pass as a parameter the action (runserver) along with the 
 IPs that are allowed to connect (0.0.0.0 means anyone) with the port where the server will be listening for 
 http requests (8080)
 

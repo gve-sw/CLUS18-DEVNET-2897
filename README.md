@@ -1,11 +1,11 @@
 # Cisco Live US - Devnet workshop 2897
-This file will provide you with instructions around how to create JavaScript, HTML and python code to create a 
+This file will provide you with instructions around how to write JavaScript, HTML and python code to create a 
 port automation web user interface on top of Cisco ACI
 
 ## Use case
 
 A company is implementing ACI in its data center. They think the user interface that comes with the solution is great, 
-however they would like to implement the following process:
+however, they would like to implement the following process:
 
 ![Workflow](lab/images/Port_Workflow_Diagram.png)
 

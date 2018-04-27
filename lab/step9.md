@@ -1,6 +1,6 @@
 ### Step 9 - Populating the pod select
 
-Now that the server is able to accept and reply REST calls with the information about pods, switches and interfaces
+Now that the server is able to accept and reply REST calls with the information about pods, switches and interfaces,
 it is time to interact with it using the javascript library Angular JS. The file that we are going to use to implement 
 that logic is located in _**static/web_app/public/js/angular-modules/app.js**_ 
 
@@ -20,22 +20,27 @@ within the appModule.controller code block:
  
 ```javascript
  $scope.getPods = function(){
+        
+        $scope.loading = true;
+        // Does a GET call to api/pod to get the pod list
         $http
             .get('api/pod')
             .then(function (response, status, headers, config){
+                // Save the data into the $scope.pods variable
                 $scope.pods = response.data
             })
             .catch(function(response, status, headers, config){
                 $scope.error = response.data.message
             })
             .finally(function(){
+                $scope.loading = false;
             })
     };
     
     $scope.getPods(); 
 ```
 
-The $scope.pods variable is associated to the pods select via the ng-option attribute added in step 4.
+The $scope.pods variable is associated to the pods select via the ng-option attribute defined in the step 4 HTML code.
 
 Next -> [Step 10 - Populating the switch select]
 

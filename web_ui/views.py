@@ -48,4 +48,4 @@ def home(request):
 
 # ====================>>>>>>>> APIs <<<<<<<<====================
 
-### STEP 8 - API METHODS CODE HERE
+### STEP 8 - API METHODS CODE BELOW

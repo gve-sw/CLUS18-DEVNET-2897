@@ -1,7 +1,7 @@
 ### Step 3 - Adding the port type 
 
-Its coding time! The first thing that we want to do is to define which type of port we want to create. We could create
-an access port, a port channel or a virtual port channel. For simplicity, we are going to implement the first two.
+The first thing that we want to do is to define which type of port we will create. We could create
+an individual port, a port channel or a virtual port channel. For simplicity, we are going to implement the first two.
 
 Copy the following code in the __**templates/web_app/home.html**__ file. You must include it within the 
 ```<div id="content-div" class="row">``` tag.
@@ -12,6 +12,7 @@ Copy the following code in the __**templates/web_app/home.html**__ file. You mus
     <h4>Port Type
     </h4>
     <hr/>
+    <!-- ****** Buttons to select port type ****** -->
     <div class="btn-group">
         <button class="btn btn--primary-ghost sn-type port-type selected"
                 onclick="$('.port-type').removeClass('selected');$(this).addClass('selected')"

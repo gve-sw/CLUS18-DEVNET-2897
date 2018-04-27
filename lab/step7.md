@@ -5,6 +5,7 @@ The only thing that is missing is the "Deploy" button.
 ```html
 <div class="col-md-12 text-large">
     <br/>
+    <!-- ****** Button to send deployment to the server ****** -->
     <button id="btnDeploy" class="btn btn--success" style="float:right"
             ng-disabled="loading"
             ng-click="deploy();">
@@ -13,7 +14,7 @@ The only thing that is missing is the "Deploy" button.
 </div>
 ```
 
-This will create the button and will place it in the correct  position.
+This code defines the button in the user interface and places it in the correct position.
 
 _Note: Use <kbd>option ⌥</kbd> + <kbd>command ⌘</kbd> + <kbd>L</kbd> to format the HTML file_
 
