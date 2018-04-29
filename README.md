@@ -41,7 +41,7 @@ For your reference, we are going to use the following frameworks
 
 These is the overall architecture of the solution:
 
-![Workflow](lab/images/app-architecure.png)
+![App Architecture](lab/images/app-architecture.png)
 
 Any web app has a client-server architecture. In this lab we will code both, the server-side (using Python) and the 
 client-side (using HTML and a JavaScript library called Angular JS)
