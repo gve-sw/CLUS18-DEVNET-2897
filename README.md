@@ -39,7 +39,7 @@ For your reference, we are going to use the following frameworks
 * Angular JS Framework - https://angularjs.org/ 
 * Cisco UI Framework - https://developer.cisco.com/site/uiux/ 
 
-These is the overall architecture of the solution:
+This is the overall architecture of the solution:
 
 ![App Architecture](lab/images/app-architecture.png)
 
