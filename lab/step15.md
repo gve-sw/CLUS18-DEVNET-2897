@@ -38,11 +38,10 @@ ng-if="deployment.epgAction == 'existing'"
 It should look like this:
 
 ```html
-    <div id="existing_epg_selection" class="form-group">
+    <div id="existing_epg_selection" class="form-group" ng-if="deployment.epgAction == 'existing'">
         <div class="form-group__text select ">
             <select id="sel_epg" name="sel_epg" ng-model="deployment.selectedEpg"
-            ng-options="epg as epg.fvAEPg.attributes.name for epg in epgs track by epg.fvAEPg.attributes.name"
-            ng-if="deployment.epgAction == 'existing'"></select>
+            ng-options="epg as epg.fvAEPg.attributes.name for epg in epgs track by epg.fvAEPg.attributes.name"></select>
             <label for="sel_epg">Existing EPG/VLAN</label>
         </div>
     </div>
@@ -57,10 +56,9 @@ ng-if="deployment.epgAction == 'new'"
 It should look like this:
 
 ```html
-    <div id="new_epg_selection" class="form-group">
+    <div id="new_epg_selection" class="form-group" ng-if="deployment.epgAction == 'new'">
         <div class="form-group__text">
-            <input id="epg" type="text" ng-model="deployment.selectedEpg" type="number"
-            ng-if="deployment.epgAction == 'new'">
+            <input id="epg" type="text" ng-model="deployment.selectedEpg" type="number">
             <label for="epg">New EPG/VLAN</label>
         </div>
     </div>
