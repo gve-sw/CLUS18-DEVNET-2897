@@ -25,10 +25,12 @@ python manage.py runserver 0.0.0.0:8080
 | Laptop-8      | leaf-2           | 1/45, 1/46, 1/47  |
 
 
+Note: A
 
 #### Individual port
 
-1. Open a browser and go to http://0.0.0.0:8080
+1. To force the browser to refresh JavaScript files, open chrome in incognito mode and go to http://0.0.0.0:8080
+_Note: Open chrome and use <kbd>command ⌘</kbd> + <kbd>Shift</kbd> + <kbd>N</kbd> to open a new incognito window_
 2. Select Port Type _Individual_
 3. Choose Pod _topology/pod-1_
 4. Choose switch _leaf-2_
@@ -50,7 +52,8 @@ Go to your terminal to see all the things that are being created in ACI. After y
 
 #### Port Channel
 
-1. Open a browser and go to http://0.0.0.0:8080
+1. To force the browser to refresh JavaScript files, open chrome in incognito mode and go to http://0.0.0.0:8080
+_Note: Open chrome and use <kbd>command ⌘</kbd> + <kbd>Shift</kbd> + <kbd>N</kbd> to open a new incognito window_
 2. Select Port Type _Port Channel_
 3. Choose Pod _topology/pod-1_
 4. Choose switch _leaf-2_
