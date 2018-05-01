@@ -12,7 +12,7 @@ This executes the manage.py file and pass as a parameter the action (runserver) 
 IPs that are allowed to connect (0.0.0.0 means anyone) with the port where the server will be listening for 
 http requests (8080)
 
-You can go to http://0.0.0.0:8080/ to see the base layout. 
+You can now open Chrome and go to http://0.0.0.0:8080/ to see the base layout. 
 
 ![base_layout](images/step2.png)
 
