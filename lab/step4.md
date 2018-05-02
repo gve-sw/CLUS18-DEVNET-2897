@@ -40,9 +40,9 @@ Copy the following code **below** the one added in step 3
         </div>
     </div>
     <!-- ****** Select for Interface 2 ****** -->
-    <div id="interface_2_selection">
+    <div id="interface_2_selection" ng-if="deployment.portType == 'portChannel'">
         <div class="form-group">
-            <div class="form-group__text select">
+            <div class="form-group__text select" >
                 <select id="sel_port2_pc" ng-model="deployment.selectedPort2"
                 ng-options="interface as interface.l1PhysIf.attributes.id for interface in interfaces track by interface.l1PhysIf.attributes.dn"></select>
                 <label for="sel_port2_pc">Interface 2</label>

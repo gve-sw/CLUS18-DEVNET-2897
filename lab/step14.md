@@ -40,7 +40,7 @@ _Note: Open chrome and use <kbd>command ⌘</kbd> + <kbd>Shift</kbd> + <kbd>N</k
 8. Press _Deploy_
 
 Go to your terminal to see all the things that are being created in ACI. After you have received a _Deployment Done!_
- go to https://sandboxapicdc.cisco.com/ and login using username **admin** and password **ciscopsdt**
+ go to https://sandboxapicdc.cisco.com/ and login using username **admin** and password **ciscopsdt**. 
  
 1. Click on Tenants
 2. Double click the one that has the same name as your assigned prefix (the prefix is located at the top banner in the web 
@@ -73,6 +73,4 @@ Go to your terminal to see all the things that are being created in ACI. After y
  
  You will see a new port-channel entry. :thumbsup:
   
-Next -> [Step 15 - Dynamic user interface]
-
-[Step 15 - Dynamic user interface]: step15.md
+#### Congratulations! You have finished this workshop :clap::tada::raised_hands:
