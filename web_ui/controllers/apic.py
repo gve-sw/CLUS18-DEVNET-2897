@@ -16,7 +16,7 @@ class ApicController:
     # TODO: By any means include blank password in your source code.
     username = "admin"
     password = "ciscopsdt"
-    url = "https://sandboxapicdc.cisco.com/"
+    url = "https://10.10.20.70/"
     token = ""
 
     def __init__(self):
@@ -452,7 +452,7 @@ class ApicController:
         if payload["deployment"]["portType"] == "access":
             # ## Access ##
             # Create Policy Group default options with attachable entity profile
-            print("**** Deployment Port Type: Access *****")
+            print("**** Deployment Port Type: Individual *****")
             intPolGroups = self.createAccessInterfacePolicyGroup(
                 name=prefix + "-access",
                 attEntPro_dn=atthEntProfiles[0]["infraAttEntityP"]["attributes"]["dn"])

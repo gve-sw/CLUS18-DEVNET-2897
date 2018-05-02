@@ -2,7 +2,20 @@
 
 ### Step 1 - Setting the environment
 
-To get started, we are going to clone a repository that contains the structure of the solution that we are going to use.
+To get started, we are going to VPN to the APIC sandbox and clone the repository that contains the structure of the 
+solution that we are going to use.
+
+#### VPN Connection
+
+1. Open your Cisco AnyConnect Secure Mobility Client
+2. Use the following credentials: 
+* URL: devnetsandboxlabs.cisco.com/rave15
+* Username: sfloresk
+* Password: eRaqXa8E
+
+Ignore warnings and connect.
+
+#### Clone the repo
 
 Open a terminal :computer: and use git clone:
 
