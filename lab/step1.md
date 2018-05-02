@@ -9,9 +9,9 @@ solution that we are going to use.
 
 1. Open your Cisco AnyConnect Secure Mobility Client
 2. Use the following credentials: 
-* URL: devnetsandboxlabs.cisco.com/rave15
-* Username: sfloresk
-* Password: eRaqXa8E
+* URL: dcloud-sjc-anyconnect.cisco.com
+* Username: v1459user1
+* Password: e556bc
 
 Ignore warnings and connect.
 
