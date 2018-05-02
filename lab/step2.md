@@ -18,7 +18,7 @@ You can now open Chrome and go to http://0.0.0.0:8080/ to see the base layout.
 
 You have a web application up and running in your machine.
 
-Next -> [Step 3 - Adding the port type UI]
+Next -> [Step 3 - Adding the port type]
 
-[Step 3 - Adding the port type UI]: step3.md
+[Step 3 - Adding the port type]: step3.md
 
