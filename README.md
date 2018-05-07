@@ -43,8 +43,8 @@ This is the overall architecture of the solution:
 
 ![App Architecture](lab/images/app-architecture.png)
 
-Any web app has a client-server architecture. In this lab we will code both, the server-side (using Python) and the 
-client-side (using HTML and a JavaScript library called Angular JS)
+Any web app has a client-server architecture. In this lab we will the client-side 
+(using HTML and a JavaScript library called Angular JS)
 
 At the end of the lab, you will have a fully functional web app that can interact with Cisco ACI.
 
