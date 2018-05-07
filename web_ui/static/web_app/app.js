@@ -56,6 +56,8 @@ appModule.controller('AppController', function($scope, $location, $http, $window
         $scope.deployment.epgAction = epgAction;
     };
 
+    // STEP 8 CODE BELOW
+
     // STEP 9 CODE BELOW
 
     // STEP 10 CODE BELOW
@@ -63,8 +65,6 @@ appModule.controller('AppController', function($scope, $location, $http, $window
     // STEP 11 CODE BELOW
 
     // STEP 12 CODE BELOW
-
-    // STEP 13 CODE BELOW
 
 
 });
