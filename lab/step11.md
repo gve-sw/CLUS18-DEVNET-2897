@@ -1,31 +1,26 @@
-### Step 11 - Populating the interface selects
+### Step 11 - Populating the EPGs/VLANs select
 
-Let's work on the interfaces. First, add the JavaScript function that will retrieve the interfaces for
-a given switch.  You **must** define this within the appModule.controller code block:
+The last drop-down list to populate is the EPGs/VLANs. Add the following JavaScript to the app.js file.
+ You **must** define this within the _**appModule.controller**_ code block:
 
 ```javascript
-    $scope.getInterfaces = function(selected_switch){
-        if(selected_switch.fabricNode){
-            // Does a GET call to api/interface to get the interfaces list
-            $scope.loading = true;
-            $http
-                .get('api/interface/' + selected_switch.fabricNode.attributes.dn )
-                .then(function (response, status, headers, config){
-                    $scope.interfaces = response.data
-                })
-                .catch(function(response, status, headers, config){
-                    $scope.error = response.data.message
-                })
-                .finally(function(){
-                    $scope.loading = false;
-                })
-        }
+    $scope.getEpgs = function(){
+        // Does a GET call to api/epgs to get the EPG/VLANs list
+        $http
+            .get('api/epgs')
+            .then(function (response, status, headers, config){
+                $scope.epgs = response.data
+            })
+            .catch(function(response, status, headers, config){
+                $scope.error = response.data.message
+            })
     };
+    
+    $scope.getEpgs();
+```
 
-``` 
+The $scope.epgs variable is associated to the EPG/VLAN select via the ng-option attribute added in step 6.
 
-The $scope.interfaces variable is associated to the interface selects via the ng-option attribute defined in the step 4 HTML code.
+Next -> [Step 12 - Requesting the deployment to the server]
 
-Next -> [Step 12 - Populating the EPGs/VLANs select]
-
-[Step 12 - Populating the EPGs/VLANs select]: step12.md
+[Step 12 - Requesting the deployment to the server]: step12.md

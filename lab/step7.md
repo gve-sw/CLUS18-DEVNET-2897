@@ -23,6 +23,6 @@ Refresh your browser to see the new section in the screen.
 ![step_7](images/step7.png)
 
 
-Next -> [Step 8 - Preparing server to receive and reply REST API calls]
+Next -> [Step 8 - Populating the pod select]
 
-[Step 8 - Preparing server to receive and reply REST API calls]: step8.md
+[Step 8 - Populating the pod select]: step8.md

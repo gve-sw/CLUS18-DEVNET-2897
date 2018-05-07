@@ -1,19 +1,7 @@
-
-
 ### Step 1 - Setting the environment
 
-To get started, we are going to VPN to the APIC sandbox and clone the repository that contains the structure of the 
+To get started, we are going to clone the repository that contains the structure of the 
 solution that we are going to use.
-
-#### VPN Connection
-
-1. Open your Cisco AnyConnect Secure Mobility Client
-2. Use the following credentials: 
-* URL: dcloud-sjc-anyconnect.cisco.com
-* Username: v1459user1
-* Password: e556bc
-
-Ignore warnings and connect.
 
 #### Clone the repo
 

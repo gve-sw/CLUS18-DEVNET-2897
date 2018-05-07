@@ -15,8 +15,8 @@ class ApicController:
     # TODO: This are sandbox credentials and are hardcoded for simplicity.
     # TODO: By any means include blank password in your source code.
     username = "admin"
-    password = "C1sco12345"
-    url = "https://apic1.dcloud.cisco.com/"
+    password = "ciscopsdt"
+    url = "https://sandboxapicdc.cisco.com/"
     token = ""
 
     def __init__(self):

@@ -1,47 +1,32 @@
-### Step 9 - Populating the pod select
+### Step 9 - Populating the switch select
 
-Now that the server is able to accept and reply REST calls with the information about pods, switches and interfaces,
-it is time to interact with it using the javascript library Angular JS. The file that we are going to use to implement 
-that logic is located in _**static/web_app/public/js/angular-modules/app.js**_ 
+We should do the same thing for switches drop-down list. This method will get that information from the server.
+ You **must** define this within the _**appModule.controller**_ code block:
 
-Within the app.js file, we are going to focus only on the section defined at the end:
-
-```javascript
-// App controller is in charge of managing all services for the application
-appModule.controller('AppController', function($scope, $location, $http, $window, $rootScope){
-
-    // NEW CODE HERE
-        
-});
-```
-
-Lets add a new method, that will get all the pods from the server and store them on memory. You **must** define this
-within the appModule.controller code block:
  
 ```javascript
- $scope.getPods = function(){
-        
-        $scope.loading = true;
-        // Does a GET call to api/pod to get the pod list
-        $http
-            .get('api/pod')
-            .then(function (response, status, headers, config){
-                // Save the data into the $scope.pods variable
-                $scope.pods = response.data
-            })
-            .catch(function(response, status, headers, config){
-                $scope.error = response.data.message
-            })
-            .finally(function(){
-                $scope.loading = false;
-            })
+$scope.getSwitches = function(pod){
+        if(pod.fabricPod){
+            // Does a GET call to api/switch to get the switches list
+            $scope.loading = true;
+            $http
+                .get('api/switch/' + pod.fabricPod.attributes.dn)
+                .then(function (response, status, headers, config){
+                    $scope.switches = response.data
+                })
+                .catch(function(response, status, headers, config){
+                    $scope.error = response.data.message
+                })
+                .finally(function(){
+                    $scope.loading = false;
+                })
+        }
     };
-    
-    $scope.getPods(); 
+ 
 ```
 
-The $scope.pods variable is associated to the pods select via the ng-option attribute defined in the step 4 HTML code.
+The $scope.switches variable is associated to the switch select via the ng-option attribute defined in the step 4 HTML code.
 
-Next -> [Step 10 - Populating the switch select]
+Next -> [Step 10 - Populating the interface selects]
 
-[Step 10 - Populating the switch select]: step10.md
+[Step 10 - Populating the interface selects]: step10.md

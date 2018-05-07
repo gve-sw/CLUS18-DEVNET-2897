@@ -1,18 +1,17 @@
-### Step 10 - Populating the switch select
+### Step 10 - Populating the interface selects
 
-We should do the same thing for switches drop-down list. This method will get that information from the server.
- You **must** define this within the appModule.controller code block:
+Let's work on the interfaces. First, add the JavaScript function that will retrieve the interfaces for
+a given switch.  You **must** define this within the appModule.controller code block:
 
- 
 ```javascript
-$scope.getSwitches = function(pod){
-        if(pod.fabricPod){
-            // Does a GET call to api/switch to get the switches list
+    $scope.getInterfaces = function(selected_switch){
+        if(selected_switch.fabricNode){
+            // Does a GET call to api/interface to get the interfaces list
             $scope.loading = true;
             $http
-                .get('api/switch/' + pod.fabricPod.attributes.dn)
+                .get('api/interface/' + selected_switch.fabricNode.attributes.dn )
                 .then(function (response, status, headers, config){
-                    $scope.switches = response.data
+                    $scope.interfaces = response.data
                 })
                 .catch(function(response, status, headers, config){
                     $scope.error = response.data.message
@@ -22,11 +21,11 @@ $scope.getSwitches = function(pod){
                 })
         }
     };
- 
-```
 
-The $scope.switches variable is associated to the switch select via the ng-option attribute defined in the step 4 HTML code.
+``` 
 
-Next -> [Step 11 - Populating the interface selects]
+The $scope.interfaces variable is associated to the interface selects via the ng-option attribute defined in the step 4 HTML code.
 
-[Step 11 - Populating the interface selects]: step11.md
+Next -> [Step 11 - Populating the EPGs/VLANs select]
+
+[Step 11 - Populating the EPGs/VLANs select]: step11.md

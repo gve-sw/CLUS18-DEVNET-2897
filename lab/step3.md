@@ -1,7 +1,7 @@
 ### Step 3 - Adding the port type 
 
-The first thing that we want to do is to define which type of port we will create. We could create
-an individual port, a port channel or a virtual port channel. For simplicity, we are going to implement the first two.
+The first thing that we want to do is to define which type of port we will create. According to the flow diagram, 
+we could create an individual port or a port channel.
 
 Copy the following code in the __**templates/web_app/home.html**__ file. You must include it within the 
 ```<div id="content-div" class="row">``` tag.

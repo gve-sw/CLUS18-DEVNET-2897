@@ -27,9 +27,17 @@ urlpatterns = [
     url(r'^home/?$', views.index, name='home'),
     url(r'^ng/home/?$', views.home, name='home'),
 
-    ### STEP 8 - URL MAPPINGS CODE HERE
+    # APIs Mappings
 
-
-
+    # Maps the URL web/api/pod to the method api_pod inside views.py
+    url(r'^api/pod/?$', views.api_pod),
+    # Maps the URL web/api/switch/ to the method api_switch inside views.py
+    url(r'^api/switch/(?P<podDn>.*)/?$', views.api_switch),
+    # Maps the URL web/api/interface/ to the method api_switch inside views.py
+    url(r'^api/interface/(?P<switchDn>.*)/?$', views.api_interface),
+    # Maps the URL web/api/epg to the method api_epg inside views.py
+    url(r'^api/epgs/?$', views.api_epg),
+    # Maps the URL web/api/deploy to the method api_deploy inside views.py
+    url(r'^api/deploy/?$', views.api_deploy),
 
 ]

@@ -1,7 +1,7 @@
 
 ### Step 2 - Running the server
 
-To run the server, execute these commands in your terminal:
+To run the server, run these commands in your terminal:
 
 ```bash
 cd $HOME/CLUS18-DEVNET-2897

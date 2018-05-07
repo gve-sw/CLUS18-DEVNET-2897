@@ -1,27 +1,34 @@
+### Step 12 - Requesting the deployment to the server
+With the pod, switch, interfaces and VLANs we have all the information that we need from the user. We will now make a 
+function in the app.js file that will send this information to the server.
 
-### Step 12 - Populating the EPGs/VLANs select
-
-The last drop-down list to populate is the EPGs/VLANs. Add the following JavaScript to the app.js file.
- You **must** define this within the appModule.controller code block:
+ You **must** define this within the _**appModule.controller**_ code block.
 
 ```javascript
-    $scope.getEpgs = function(){
-        // Does a GET call to api/epgs to get the EPG/VLANs list
+    $scope.deploy = function(){
+        $scope.loading = true;
+        
+        // Does a POST call to api/deploy to send the deployment information to the server for processing.
         $http
-            .get('api/epgs')
+            .post('api/deploy', {'deployment': $scope.deployment })
             .then(function (response, status, headers, config){
-                $scope.epgs = response.data
+                $scope.success = "Deployment done!"
             })
             .catch(function(response, status, headers, config){
                 $scope.error = response.data.message
             })
+            .finally(function(){
+                $scope.loading = false;
+                // After the deployment is done, refresh the EPGs/VLANs items
+                $scope.getEpgs();
+            })
     };
-    
-    $scope.getEpgs();
 ```
 
-The $scope.epgs variable is associated to the EPG/VLAN select via the ng-option attribute added in step 6.
+The **Deploy** button has a ng-click attribute that will execute the method _**deploy**_ each time that the 
+button is pressed. 
 
-Next -> [Step 13 - Requesting the deployment to the server]
 
-[Step 13 - Requesting the deployment to the server]: step13.md
+Next -> [Step 13 - Test your app]
+
+[Step 13 - Test your app]: step13.md
