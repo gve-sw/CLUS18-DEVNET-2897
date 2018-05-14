@@ -1,7 +1,7 @@
 ### Step 8 - Populating the pod select
 
 It is time to interact with the server using the javascript library Angular JS. The file that we are going to use to implement 
-that logic is located in _**static/web_app/app.js**_. We are going to focus only on the section defined at the end.
+that logic is located in _**web_ui/static/web_app/app.js**_. We are going to focus only on the section defined at the end.
 
 Lets add a new method that will get all the pods from the server and store them on memory. You **must** define this
 within the _**appModule.controller**_ code block:

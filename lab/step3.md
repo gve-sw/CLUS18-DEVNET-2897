@@ -3,7 +3,7 @@
 The first thing that we want to do is to define which type of port we will create. According to the flow diagram, 
 we could create an individual port or a port channel.
 
-Copy the following code in the __**templates/web_app/home.html**__ file. You must include it within the 
+Copy the following code in the __**web_ui/templates/web_app/home.html**__ file. You must include it within the 
 ```<div id="content-div" class="row">``` tag.
 
 ```html
