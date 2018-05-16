@@ -8,7 +8,7 @@ solution that we are going to use.
 Open a terminal :computer: and use git clone:
 
 ```bash
-git clone https://wwwin-github.cisco.com/sfloresk/CLUS18-DEVNET-2897.git $HOME/CLUS18-DEVNET-2897
+git clone https://github.com/cisco-gve/CLUS18-DEVNET-2897.git $HOME/CLUS18-DEVNET-2897
 ```
 
 Then, create a virtual environment and install requirements
