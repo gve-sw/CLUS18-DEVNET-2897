@@ -7,7 +7,7 @@ If you see that the app is not running anymore, execute the following commands i
 
 ```bash
 cd $HOME/CLUS18-DEVNET-2897
-python manage.py runserver 0.0.0.0:8080
+python manage.py runserver 0.0.0.0:19010
 ```
 
 
