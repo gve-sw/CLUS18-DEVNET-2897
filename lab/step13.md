@@ -25,7 +25,6 @@ python manage.py runserver 0.0.0.0:19010
 | Laptop-8      | leaf-2           | 1/45, 1/46, 1/47  |
 
 
-Note: A
 
 #### Individual port
 
