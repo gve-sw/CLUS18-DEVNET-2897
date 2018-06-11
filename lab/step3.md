@@ -32,7 +32,7 @@ Copy the following code in the __**web_ui/templates/web_app/home.html**__ file. 
 The code above creates a section with a header and two buttons that will be used to choose the port type to deploy;
 either Individual or Port Channel
 
-_Note: After you paste the code, use <kbd>option ⌥</kbd> + <kbd>command ⌘</kbd> + <kbd>L</kbd> to format the HTML file_
+_Note: After you paste the code, use <kbd>option ⌥</kbd> + <kbd>command ⌘</kbd> + <kbd>L</kbd> to format the HTML file in PyCharm_
 
 Refresh your browser to see the new components shown in the screen.
 
