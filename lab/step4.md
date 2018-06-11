@@ -52,7 +52,7 @@ Copy the following code **below** the one added in step 3
 </div>
 ```
 
-_Note: Use <kbd>option ⌥</kbd> + <kbd>command ⌘</kbd> + <kbd>L</kbd> to format the HTML file_
+_Note: Use <kbd>option ⌥</kbd> + <kbd>command ⌘</kbd> + <kbd>L</kbd> to format the HTML file in PyCharm_
 
 Refresh your browser to see the new section in the screen.
 
