@@ -15,14 +15,14 @@ python manage.py runserver 0.0.0.0:19010
  
 | Laptop Number | Switch           | Ports             | 
 | ------------- |:----------------:|:-----------------:|
-| Laptop-1      | leaf-2           | 1/24, 1/25, 1/26  |
-| Laptop-2      | leaf-2           | 1/27, 1/28, 1/29  |
-| Laptop-3      | leaf-2           | 1/30, 1/31, 1/32  |
-| Laptop-4      | leaf-2           | 1/33, 1/34, 1/35  |
-| Laptop-5      | leaf-2           | 1/36, 1/37, 1/38  |
-| Laptop-6      | leaf-2           | 1/39, 1/40, 1/41  |
-| Laptop-7      | leaf-2           | 1/42, 1/43, 1/44  |
-| Laptop-8      | leaf-2           | 1/45, 1/46, 1/47  |
+| Laptop-1      | Leaf-101         | 1/7, 1/8, 1/9     |
+| Laptop-2      | Leaf-101         | 1/10, 1/11, 1/12  |
+| Laptop-3      | Leaf-101         | 1/13, 1/14, 1/15  |
+| Laptop-4      | Leaf-101         | 1/16, 1/19, 1/20  |
+| Laptop-5      | Leaf-101         | 1/21, 1/22, 1/23  |
+| Laptop-6      | Leaf-101         | 1/24, 1/25, 1/26  |
+| Laptop-7      | Leaf-101         | 1/27, 1/28, 1/29  |
+| Laptop-8      | Leaf-101         | 1/30, 1/31, 1/32  |
 
 
 
@@ -63,7 +63,7 @@ _Note: Open chrome and use <kbd>command ⌘</kbd> + <kbd>Shift</kbd> + <kbd>N</k
 9. Press _Deploy_
 
 Go to your terminal to see all the things that are being created in ACI. After you have received a _Deployment Done!_
- go to https://sandboxapicdc.cisco.com/ and login using username **admin** and password **ciscopsdt**.
+ go to https://sandboxapicdc.cisco.com/ and login using username **admin** and password _ciscopsdt_
  
 1. Click on Tenants
 2. Double click the one that has the same name as your assigned prefix (the prefix is located at the top banner in the web 
