@@ -54,4 +54,3 @@ At the end of the lab, you will have a fully functional web app that can interac
  
 [Get Started!]: lab/step1.md
 
-_Note: If you want to just see the end result of the lab, go to https://github.com/cisco-gve/CLUS18-DEVNET-2897-COMPLETED_
